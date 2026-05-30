@@ -82,7 +82,8 @@ export function ContactForm() {
           type="submit"
           size="lg"
           disabled={form.formState.isSubmitting}
-          className="w-full gap-2"
+          className="w-full gap-2 text-sm"
+          style={{ fontFamily: "var(--font-cta)" }}
         >
           <Send className="h-4 w-4" />
           {form.formState.isSubmitting ? "Sending..." : "Get Your Team Started"}

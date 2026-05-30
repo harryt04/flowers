@@ -82,7 +82,7 @@ export function EmailSubscribeForm() {
           type="submit"
           size="lg"
           disabled={form.formState.isSubmitting}
-          className="w-full gap-2 text-lg"
+          className="w-full gap-2 text-sm"
           style={{ fontFamily: "var(--font-cta)" }}
         >
           <Mail className="h-4 w-4" />

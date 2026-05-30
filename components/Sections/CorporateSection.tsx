@@ -93,7 +93,8 @@ export function CorporateSection() {
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <a
                 href="#contact"
-                className={buttonVariants({ size: "lg", className: "px-8 shadow-md" })}
+                className={buttonVariants({ size: "lg", className: "px-8 shadow-md text-lg" })}
+                style={{ fontFamily: "var(--font-cta)" }}
               >
                 Get Your Team Started
               </a>

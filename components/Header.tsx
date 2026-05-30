@@ -9,7 +9,7 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-cream/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2 sm:px-6">
         <a href="#top" className="flex items-center gap-2">
           <Image
@@ -17,7 +17,7 @@ export function Header() {
             alt="Just Because Flowers"
             width={140}
             height={52}
-            className="h-12 w-auto object-contain"
+            className="h-12 w-auto object-contain [filter:brightness(0.6)]"
             priority
           />
         </a>
