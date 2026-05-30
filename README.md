@@ -27,8 +27,7 @@ cp .env.local.example .env.local
 Required values:
 
 - `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` (optional in dev; API mocks success if missing)
-- `MONGODB_URI` (required for `/api/contact` writes)
-- `MONGODB_DB_NAME` (optional, defaults to `just-because-flowers`)
+- `MONGODB_URI` (required for `/api/contact` writes; includes the database name in the connection string)
 
 ## Development
 

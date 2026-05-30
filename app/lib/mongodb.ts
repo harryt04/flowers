@@ -22,6 +22,5 @@ export async function getDb(): Promise<Db> {
   }
 
   const client = await clientPromise;
-  const dbName = process.env.MONGODB_DB_NAME || "just-because-flowers";
-  return client.db(dbName);
+  return client.db();
 }

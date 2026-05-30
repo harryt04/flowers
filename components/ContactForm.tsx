@@ -34,7 +34,7 @@ export function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
-      inquiryType: "other",
+      inquiryType: "corporate",
       message: "",
     },
   });
@@ -66,7 +66,7 @@ export function ContactForm() {
     form.reset({
       name: "",
       email: "",
-      inquiryType: "other",
+      inquiryType: "corporate",
       message: "",
     });
     setServerMessage(data.message ?? "Thank you for reaching out!");
