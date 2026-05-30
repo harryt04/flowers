@@ -3,26 +3,18 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { contactSchema, type ContactInput } from "@/lib/validation";
 
 export function ContactForm() {
@@ -32,10 +24,7 @@ export function ContactForm() {
   const form = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "",
       email: "",
-      inquiryType: "corporate",
-      message: "",
     },
   });
 
@@ -59,17 +48,12 @@ export function ContactForm() {
 
     if (!response.ok || !data.success) {
       setIsError(true);
-      setServerMessage(data.error ?? "Could not submit your message.");
+      setServerMessage(data.error ?? "Something went wrong. Please try again.");
       return;
     }
 
-    form.reset({
-      name: "",
-      email: "",
-      inquiryType: "corporate",
-      message: "",
-    });
-    setServerMessage(data.message ?? "Thank you for reaching out!");
+    form.reset();
+    setServerMessage(data.message ?? "Thank you! We'll be in touch soon.");
   });
 
   return (
@@ -77,66 +61,15 @@ export function ContactForm() {
       <form onSubmit={onSubmit} className="space-y-4" noValidate>
         <FormField
           control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Your name" autoComplete="name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Your Work Email</FormLabel>
               <FormControl>
-                <Input type="email" placeholder="you@example.com" autoComplete="email" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="inquiryType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Inquiry Type</FormLabel>
-              <Select value={field.value} onValueChange={field.onChange}>
-                <FormControl>
-                  <SelectTrigger className="w-full bg-background">
-                    <SelectValue placeholder="Select an inquiry type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="corporate">Corporate Program</SelectItem>
-                  <SelectItem value="market">Farmers Market</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-              <FormDescription>Tell us how we can best support you.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Message</FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Share a little about what you need..."
-                  className="min-h-32"
+                <Input
+                  type="email"
+                  placeholder="you@yourcompany.com"
+                  autoComplete="email"
                   {...field}
                 />
               </FormControl>
@@ -145,12 +78,18 @@ export function ContactForm() {
           )}
         />
 
-        <Button type="submit" size="lg" disabled={form.formState.isSubmitting}>
-          {form.formState.isSubmitting ? "Sending..." : "Send Message"}
+        <Button
+          type="submit"
+          size="lg"
+          disabled={form.formState.isSubmitting}
+          className="w-full gap-2"
+        >
+          <Send className="h-4 w-4" />
+          {form.formState.isSubmitting ? "Sending..." : "Get Your Team Started"}
         </Button>
 
         {serverMessage ? (
-          <p className={`text-sm ${isError ? "text-destructive" : "text-soft-green"}`}>
+          <p className={`text-sm text-center ${isError ? "text-destructive" : "text-soft-green"}`}>
             {serverMessage}
           </p>
         ) : null}

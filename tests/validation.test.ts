@@ -15,25 +15,18 @@ describe("subscribeSchema", () => {
 });
 
 describe("contactSchema", () => {
-  it("accepts a complete valid contact payload", () => {
-    const parsed = contactSchema.safeParse({
-      name: "Jane Doe",
-      email: "jane@example.com",
-      inquiryType: "corporate",
-      message: "I'd love to learn more about a recurring flower program.",
-    });
-
+  it("accepts a valid email", () => {
+    const parsed = contactSchema.safeParse({ email: "jane@company.com" });
     expect(parsed.success).toBe(true);
   });
 
-  it("rejects missing message details", () => {
-    const parsed = contactSchema.safeParse({
-      name: "Jane Doe",
-      email: "jane@example.com",
-      inquiryType: "other",
-      message: "short",
-    });
+  it("rejects an invalid email", () => {
+    const parsed = contactSchema.safeParse({ email: "not-valid" });
+    expect(parsed.success).toBe(false);
+  });
 
+  it("rejects missing email", () => {
+    const parsed = contactSchema.safeParse({});
     expect(parsed.success).toBe(false);
   });
 });
