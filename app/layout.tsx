@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Nunito, Dancing_Script } from "next/font/google";
+import { Playfair_Display, Nunito, Dancing_Script, Pacifico } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -20,6 +20,12 @@ const dancingScript = Dancing_Script({
   variable: "--font-accent",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const pacifico = Pacifico({
+  variable: "--font-cta",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -61,7 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${nunito.variable} ${dancingScript.variable} h-full antialiased scroll-smooth`}
+      className={`${playfair.variable} ${nunito.variable} ${dancingScript.variable} ${pacifico.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-cream text-foreground font-body">
         <Header />

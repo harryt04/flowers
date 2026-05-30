@@ -82,7 +82,8 @@ export function EmailSubscribeForm() {
           type="submit"
           size="lg"
           disabled={form.formState.isSubmitting}
-          className="w-full gap-2"
+          className="w-full gap-2 text-lg"
+          style={{ fontFamily: "var(--font-cta)" }}
         >
           <Mail className="h-4 w-4" />
           {form.formState.isSubmitting ? "Joining..." : "Join Our Sunshine List"}

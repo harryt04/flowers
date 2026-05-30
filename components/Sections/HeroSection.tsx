@@ -31,7 +31,11 @@ export function HeroSection() {
               and connected — just because.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-              <a href="#market" className={buttonVariants({ size: "lg", className: "px-8 py-6 text-base shadow-md" })}>
+              <a
+                href="#market"
+                className={buttonVariants({ size: "lg", className: "px-8 py-6 text-lg shadow-md" })}
+                style={{ fontFamily: "var(--font-cta)" }}
+              >
                 Find Us at the Market
               </a>
               <a
