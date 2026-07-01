@@ -24,7 +24,7 @@ export function EmailSection() {
             Join Our Sunshine List
           </h2>
           <p className="mt-4 text-lg leading-8 text-warm-gray">
-            Be the first to hear about market dates, seasonal bouquet drops, and little
+            Be the first to hear about upcoming pop-ups, seasonal bouquet drops, and little
             joyful surprises. We keep it light, warm, and full of heart.
           </p>
 

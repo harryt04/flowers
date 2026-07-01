@@ -21,8 +21,7 @@ No Makefile, no CI, no task runner.
 
 ## Environment Variables
 
-- `MONGODB_URI` — required for `/api/contact` to persist data
-- `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` — optional; `/api/subscribe` returns mock success in dev if missing
+- `MONGODB_URI` — required; MongoDB connection string pointing to a cluster (e.g., `mongodb+srv://user:password@cluster.mongodb.net/?retryWrites=true&w=majority`)
 
 Copy `.env.local.example` → `.env.local`.
 
@@ -34,8 +33,8 @@ Single-page app — all content is on `/`. Navigation uses smooth-scroll to sect
 app/
   page.tsx          # composes all section components
   api/
-    contact/        # POST → MongoDB insert
-    subscribe/      # POST → Google Apps Script webhook
+    contact/        # POST → MongoDB insert into corporate_leads
+    subscribe/      # POST → MongoDB insert into emailSubscribers
 components/
   Sections/         # HeroSection, AboutSection, FarmersMarketSection, EmailSection, CorporateSection, ContactSection
   ui/               # shadcn primitives (do not hand-edit; use `npx shadcn add`)

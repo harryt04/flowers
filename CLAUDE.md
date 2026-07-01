@@ -15,7 +15,7 @@ npx tsc --noEmit                            # type-check only
 
 ## Project Overview
 
-This is a Next.js 16 landing page for Just Because Flowers — a single-page site with smooth-scroll navigation to sections (hero, about, market, email signup, corporate, contact). Form submissions (email signup, contact) integrate with external services (Google Apps Script, MongoDB).
+This is a Next.js 16 landing page for Just Because Flowers — a single-page site with smooth-scroll navigation to sections (hero, about, market, email signup, corporate, contact). Form submissions integrate with MongoDB (email signup and event booking persist to collections).
 
 **Tech Stack**: Next.js 16 (App Router) + TypeScript 5 (strict mode) + Tailwind CSS v4 + shadcn/ui (base-nova) + MongoDB + Vitest
 
@@ -31,8 +31,8 @@ The source of truth for form schemas is `/app/lib/validation.ts` — Zod schemas
 
 ### API Routes
 
-- `POST /api/subscribe` — forwards email to Google Apps Script webhook (or mocks success in dev if `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` is missing)
-- `POST /api/contact` — validates and inserts contact submission into MongoDB `contacts` collection
+- `POST /api/subscribe` — validates and inserts email into `emailSubscribers` MongoDB collection; handles duplicate signups gracefully.
+- `POST /api/contact` — validates and inserts contact submission into MongoDB `corporate_leads` collection
 
 Both routes validate the request body against schemas from `lib/validation.ts` before processing.
 
@@ -55,8 +55,17 @@ Components are installed via `npx shadcn add <component>` with `base-nova` style
 ## Environment Setup
 
 Create `.env.local` from `.env.local.example`. Required:
-- `MONGODB_URI` — for `/api/contact` to persist data (includes database name)
-- `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` — optional; the app mocks email signup success in dev without it
+- `MONGODB_URI` — MongoDB connection string pointing to a cluster (e.g., `mongodb+srv://...`). 
+  The database name is computed automatically in code as `sunshineflowerbar-{NODE_ENV}`, 
+  so the URI should point to the cluster root, not a specific database.
+  Example: `mongodb+srv://user:password@cluster.mongodb.net/?retryWrites=true&w=majority`
+
+MongoDB collections are created automatically on first insert:
+- `bookingRequests` — event booking form submissions
+- `emailSubscribers` — email signup submissions
+- `corporate_leads` — corporate contact form submissions
+
+Optional: Create a unique index on `emailSubscribers.email` in MongoDB Atlas for better duplicate handling.
 
 ## Testing
 

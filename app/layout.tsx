@@ -29,22 +29,22 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://justbecauseflowers.com"),
-  title: "Just Because Flowers | Spreading Sunshine, One Bouquet at a Time",
+  metadataBase: new URL("https://sunshineflowerbar.com"),
+  title: "Sunshine Flower Bar | Share Kindness. Brighten Someone's Day.",
   description:
-    "Fresh, thoughtful bouquets at local farmers markets. Bring joy and connection into everyday life.",
+    "Mobile flower bar for markets, pop-ups, weddings, showers, corporate events, and just-because moments.",
   openGraph: {
-    title: "Just Because Flowers",
+    title: "Sunshine Flower Bar",
     description:
-      "Spreading Sunshine, One Bouquet at a Time. Fresh bouquets, warm moments, and joyful connection.",
-    url: "https://justbecauseflowers.com",
-    siteName: "Just Because Flowers",
+      "Share Kindness. Brighten Someone's Day. Fresh bouquets for every occasion.",
+    url: "https://sunshineflowerbar.com",
+    siteName: "Sunshine Flower Bar",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Just Because Flowers bouquet",
+        alt: "Sunshine Flower Bar bouquet",
       },
     ],
     locale: "en_US",
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Just Because Flowers",
+    title: "Sunshine Flower Bar",
     description:
-      "Fresh, thoughtful bouquets at local farmers markets and beyond.",
+      "Share Kindness. Brighten Someone's Day. Mobile flower bar for markets, pop-ups, and events.",
     images: ["/og-image.png"],
   },
 };

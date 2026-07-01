@@ -21,11 +21,10 @@ export function ContactSection() {
             className="text-4xl font-bold text-warm-charcoal sm:text-5xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Bring Flowers to Your Office
+            Tell Us About Your Event
           </h2>
           <p className="mt-4 text-lg leading-8 text-warm-gray">
-            Drop your email and we&apos;ll reach out to learn about your team and put together a
-            program that fits. No pressure — just flowers, sunshine, and good vibes.
+            Help us understand what you&apos;re celebrating. We&apos;ll bring flowers to the occasion.
           </p>
 
           <div className="mt-8 rounded-3xl border border-border bg-background p-6 shadow-sm sm:p-8">

@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { contactSchema, type ContactInput } from "@/lib/validation";
 
 export function ContactForm() {
@@ -24,7 +25,13 @@ export function ContactForm() {
   const form = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
+      name: "",
       email: "",
+      phone: "",
+      eventDate: "",
+      location: "",
+      estimatedGuests: "",
+      message: "",
     },
   });
 
@@ -61,15 +68,125 @@ export function ContactForm() {
       <form onSubmit={onSubmit} className="space-y-4" noValidate>
         <FormField
           control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your Name</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Jane Doe"
+                  autoComplete="name"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Your Work Email</FormLabel>
+              <FormLabel>Email Address</FormLabel>
               <FormControl>
                 <Input
                   type="email"
-                  placeholder="you@yourcompany.com"
+                  placeholder="jane@example.com"
                   autoComplete="email"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="phone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Phone (optional)</FormLabel>
+              <FormControl>
+                <Input
+                  type="tel"
+                  placeholder="(555) 123-4567"
+                  autoComplete="tel"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="eventDate"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Event Date (optional)</FormLabel>
+              <FormControl>
+                <Input
+                  type="date"
+                  placeholder="YYYY-MM-DD"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Location (optional)</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Highland, UT"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="estimatedGuests"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Estimated Guests (optional)</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="10–20"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tell Us About Your Event (optional)</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Help us understand the vibe..."
+                  rows={4}
                   {...field}
                 />
               </FormControl>
@@ -86,11 +203,15 @@ export function ContactForm() {
           style={{ fontFamily: "var(--font-cta)" }}
         >
           <Send className="h-4 w-4" />
-          {form.formState.isSubmitting ? "Sending..." : "Get Your Team Started"}
+          {form.formState.isSubmitting ? "Sending..." : "Send Booking Request"}
         </Button>
 
         {serverMessage ? (
-          <p className={`text-sm text-center ${isError ? "text-destructive" : "text-soft-green"}`}>
+          <p
+            className={`text-sm text-center ${isError ? "text-destructive" : "text-soft-green"}`}
+            aria-live="polite"
+            role="status"
+          >
             {serverMessage}
           </p>
         ) : null}

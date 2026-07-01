@@ -34,7 +34,7 @@ export function AboutSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-border">
               <Image
                 src="/concepts/brand.png"
-                alt="Just Because Flowers brand world"
+                alt="Sunshine Flower Bar founder with bouquets and floral arrangements"
                 width={480}
                 height={560}
                 className="w-full h-auto object-cover"

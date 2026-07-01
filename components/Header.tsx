@@ -1,34 +1,40 @@
 import Image from "next/image";
 
 const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#market", label: "Market" },
-  { href: "#corporate", label: "Corporate" },
-  { href: "#contact", label: "Contact" },
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "About", href: "#about" },
+  { label: "Pop-Ups", href: "#pop-ups" },
+  { label: "Corporate", href: "#corporate" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-2 sm:px-6">
-        <a href="#top" className="flex items-center gap-2">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <a href="#top" className="flex flex-col items-center gap-1">
           <Image
-            src="/concepts/logo.png"
-            alt="Just Because Flowers"
-            width={140}
-            height={52}
-            className="h-12 w-auto object-contain [filter:brightness(0.6)]"
+            src="/logo.png"
+            alt="Sunshine Flower Bar"
+            width={80}
+            height={80}
+            className="h-10 w-auto object-contain"
             priority
           />
+          <span
+            className="text-xs font-medium text-warm-charcoal"
+            style={{ fontFamily: "var(--font-accent)" }}>
+            just because
+          </span>
         </a>
 
-        <nav aria-label="Primary" className="flex items-center gap-4 sm:gap-6">
+        <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-6">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="font-body text-sm font-semibold text-warm-gray transition-colors hover:text-warm-charcoal"
-            >
+              className="font-body text-xs sm:text-sm font-semibold text-warm-gray transition-colors hover:text-warm-charcoal whitespace-nowrap">
               {item.label}
             </a>
           ))}

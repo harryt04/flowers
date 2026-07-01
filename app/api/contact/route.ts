@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 
-import { contactSchema } from "@/lib/validation";
+import { bookingSchema } from "@/lib/validation";
+import { getDb, mongoDBConfig } from "@/lib/mongo-client";
 
 export async function POST(req: Request) {
   try {
     const json = await req.json();
-    const parsed = contactSchema.safeParse(json);
+    const parsed = bookingSchema.safeParse(json);
 
     if (!parsed.success) {
       const issue = parsed.error.issues[0];
@@ -18,31 +19,28 @@ export async function POST(req: Request) {
       );
     }
 
-    const mongoUri = process.env.MONGODB_URI;
-
-    if (mongoUri) {
-      try {
-        const { getDb } = await import("@/app/lib/mongodb");
-        const db = await getDb();
-        await db.collection("corporate_leads").insertOne({
-          email: parsed.data.email,
+    try {
+      const db = await getDb();
+      await db
+        .collection(mongoDBConfig.collections.bookingRequests)
+        .insertOne({
+          ...parsed.data,
           submittedAt: new Date(),
         });
-      } catch (dbError) {
-        console.error("[POST /api/contact] MongoDB error:", dbError);
-        return NextResponse.json(
-          {
-            success: false,
-            error: "Couldn't save your info right now. Please try again soon.",
-          },
-          { status: 502 },
-        );
-      }
+    } catch (dbError) {
+      console.error("[POST /api/contact] MongoDB error:", dbError);
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Couldn't save your info right now. Please try again soon.",
+        },
+        { status: 502 },
+      );
     }
 
     return NextResponse.json({
       success: true,
-      message: "You're on our radar! We'll reach out soon to chat about your team.",
+      message: "Thanks! We'll be in touch within 1-2 business days to talk about your event.",
     });
   } catch (error) {
     console.error("[POST /api/contact] ERROR:", error);

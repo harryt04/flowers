@@ -39,7 +39,7 @@ export function CorporateSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-border">
               <Image
                 src="/concepts/trailer.png"
-                alt="Just Because Flowers mobile trailer"
+                alt="Sunshine Flower Bar mobile flower trailer at corporate event"
                 width={480}
                 height={560}
                 className="w-full h-auto object-cover"
@@ -62,9 +62,7 @@ export function CorporateSection() {
               Bring Sunshine to Your Workplace
             </h2>
             <p className="mt-4 text-lg leading-8 text-warm-gray">
-              Your company isn&apos;t just buying flowers. You&apos;re investing in the moments that
-              make employees feel genuinely valued — and that ripple outward to their homes, their
-              families, and their attitude every Wednesday morning.
+              Bring unexpected joy to your team. Fresh flowers boost morale, spark conversation, and show your people they matter. From weekly deliveries to pop-up events, we help you celebrate your workplace culture with thoughtful, memorable moments.
             </p>
 
             {/* Features */}
@@ -96,7 +94,7 @@ export function CorporateSection() {
                 className={buttonVariants({ size: "lg", className: "px-8 shadow-md text-lg" })}
                 style={{ fontFamily: "var(--font-cta)" }}
               >
-                Get Your Team Started
+                Book Your Event
               </a>
               <p className="self-center text-sm text-warm-gray italic">
                 No commitment — we&apos;d love to chat first.

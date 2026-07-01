@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "sunshine-yellow": "#F4D03F",
-        cream: "#FFFDD0",
+        "sunshine-yellow": "#F4BD22",
+        cream: "#FFF9EA",
         "warm-white": "#F5F5F0",
-        "soft-green": "#A8C686",
+        "soft-green": "#39442B",
         "warm-charcoal": "#3F3A2F",
         "warm-gray": "#6B6354",
       },

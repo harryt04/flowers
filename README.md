@@ -5,7 +5,7 @@ Warm, single-page Next.js landing page for Just Because Flowers with:
 - Brand-first sections (hero, about, market, email list, corporate, contact)
 - Form handling and validation with `react-hook-form` + `zod`
 - API routes for email signups and contact submissions
-- MongoDB integration for contact submissions
+- MongoDB integration for all form submissions
 - shadcn/ui components themed to sunshine-inspired brand colors
 
 ## Stack
@@ -26,8 +26,7 @@ cp .env.local.example .env.local
 
 Required values:
 
-- `GOOGLE_APPS_SCRIPT_WEBHOOK_URL` (optional in dev; API mocks success if missing)
-- `MONGODB_URI` (required for `/api/contact` writes; includes the database name in the connection string)
+- `MONGODB_URI` (required; MongoDB connection string pointing to a cluster, e.g., `mongodb+srv://user:password@cluster.mongodb.net/?retryWrites=true&w=majority`)
 
 ## Development
 
@@ -50,8 +49,8 @@ npm run build
 
 - `POST /api/subscribe`
   - Body: `{ "email": "you@example.com" }`
-  - Validates email and forwards to Apps Script webhook if configured.
+  - Validates email and stores in MongoDB `emailSubscribers` collection.
 
 - `POST /api/contact`
   - Body: `{ "name", "email", "inquiryType", "message" }`
-  - Validates payload and stores submission in MongoDB `contacts` collection.
+  - Validates payload and stores submission in MongoDB `corporate_leads` collection.

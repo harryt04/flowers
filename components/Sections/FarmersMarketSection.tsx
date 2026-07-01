@@ -35,7 +35,7 @@ export function FarmersMarketSection() {
             <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-border">
               <Image
                 src="/concepts/tent.png"
-                alt="Just Because Flowers market tent"
+                alt="Sunshine Flower Bar yellow market tent at farmers market"
                 width={480}
                 height={560}
                 className="w-full h-auto object-cover"
