@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Brand
+
+Read [`company-brand.md`](company-brand.md) before making any design, copy, or color decision — it covers voice, palette, typography, and aesthetic dos/don'ts for Sunshine Flower Bar.
+
 ## Stack
 
 Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`base-nova` style), MongoDB, Vitest.
