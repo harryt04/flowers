@@ -2,10 +2,10 @@ import Image from 'next/image'
 
 export function SeasonalMenuSection() {
   return (
-    <section id="seasonal-menu" className="bg-cream">
+    <section id="seasonal-menu" className="bg-background">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <h2
-          className="text-warm-charcoal mb-8 text-center text-4xl font-bold sm:text-5xl"
+          className="text-foreground mb-8 text-center text-4xl font-bold sm:text-5xl"
           style={{ fontFamily: 'var(--font-display)' }}
         >
           Fresh Blooms, Every Season

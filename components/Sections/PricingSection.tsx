@@ -26,16 +26,16 @@ export function PricingSection() {
   ]
 
   return (
-    <section id="pricing" className="bg-warm-white py-20 sm:py-28">
+    <section id="pricing" className="bg-secondary py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-16 text-center">
           <h2
-            className="text-warm-charcoal text-4xl font-bold sm:text-5xl"
+            className="text-foreground text-4xl font-bold sm:text-5xl"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Simple Pricing
           </h2>
-          <p className="text-warm-gray mt-4 text-lg">
+          <p className="text-muted-foreground mt-4 text-lg">
             Choose your perfect bouquet
           </p>
         </div>
@@ -46,15 +46,15 @@ export function PricingSection() {
               key={tier.name}
               className={`relative rounded-2xl border-2 p-8 transition-all ${
                 tier.popular
-                  ? 'border-sunshine-yellow scale-105 bg-white shadow-lg'
-                  : 'border-border bg-white hover:shadow-md'
+                  ? 'border-primary scale-105 bg-card shadow-lg'
+                  : 'border-border bg-card hover:shadow-md'
               }`}
             >
               {/* Popular Badge */}
               {tier.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 transform">
                   <span
-                    className="bg-sunshine-yellow/10 text-warm-charcoal border-sunshine-yellow/30 inline-block rounded-full border px-3 py-1 text-sm font-semibold"
+                    className="bg-primary/10 text-foreground border-primary/30 inline-block rounded-full border px-3 py-1 text-sm font-semibold"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     Most Popular
@@ -64,7 +64,7 @@ export function PricingSection() {
 
               {/* Tier Name */}
               <h3
-                className="text-warm-charcoal text-2xl font-bold"
+                className="text-foreground text-2xl font-bold"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {tier.name}
@@ -72,14 +72,14 @@ export function PricingSection() {
 
               {/* Price */}
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-warm-charcoal text-4xl font-bold">
+                <span className="text-foreground text-4xl font-bold">
                   ${tier.price}
                 </span>
-                <span className="text-warm-gray">per bouquet</span>
+                <span className="text-muted-foreground">per bouquet</span>
               </div>
 
               {/* Stems */}
-              <p className="text-warm-gray mt-2 text-sm">
+              <p className="text-muted-foreground mt-2 text-sm">
                 {tier.stems} hand-selected stems
               </p>
 
@@ -88,7 +88,7 @@ export function PricingSection() {
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3">
                     <Check className="text-accent h-5 w-5 flex-shrink-0" />
-                    <span className="text-warm-charcoal">{feature}</span>
+                    <span className="text-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>

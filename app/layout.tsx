@@ -74,7 +74,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${nunito.variable} ${dancingScript.variable} ${pacifico.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="bg-cream text-foreground font-body flex min-h-full flex-col">
+      <body className="bg-background text-foreground font-body flex min-h-full flex-col">
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />

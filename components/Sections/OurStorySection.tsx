@@ -28,32 +28,32 @@ const values = [
 
 export function OurStorySection() {
   return (
-    <section id="about" className="bg-cream">
+    <section id="about" className="bg-background">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         {/* Mobile layout: stack vertically */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
           {/* Bio Text - Left on desktop, top on mobile */}
           <div className="flex-1 lg:order-1">
             <h2
-              className="text-warm-charcoal text-4xl font-bold sm:text-5xl"
+              className="text-foreground text-4xl font-bold sm:text-5xl"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               Hi, I&apos;m Elisabeth
             </h2>
-            <p className="text-warm-gray mt-6 text-lg leading-8">
+            <p className="text-muted-foreground mt-6 text-lg leading-8">
               I believe flowers are a love language. For years, I watched people
               light up when they received unexpected blooms &mdash; and I
               realized that moment of joy was something the world needed more
               of.
             </p>
-            <p className="text-warm-gray mt-4 text-lg leading-8">
+            <p className="text-muted-foreground mt-4 text-lg leading-8">
               Sunshine Flower Bar started as a simple idea: make it easy for
               people to spread sunshine to anyone, anytime. Whether it&apos;s
               celebrating a win, offering comfort, or just saying &quot;I&apos;m
               thinking of you&quot; &mdash; every bouquet is handpicked with
               intention and wrapped with care.
             </p>
-            <p className="text-warm-gray mt-4 text-lg leading-8">
+            <p className="text-muted-foreground mt-4 text-lg leading-8">
               Each stem is sourced from local growers and arranged to celebrate
               the season. And with every order, you&apos;ll include a
               handwritten Kindness Card &mdash; because the real gift isn&apos;t
@@ -67,17 +67,17 @@ export function OurStorySection() {
                   key={title}
                   className="bg-background border-border/60 flex items-start gap-3 rounded-2xl border p-4 shadow-sm"
                 >
-                  <div className="bg-sunshine-yellow/30 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl">
-                    <Icon className="text-warm-charcoal h-5 w-5" />
+                  <div className="bg-primary/30 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl">
+                    <Icon className="text-foreground h-5 w-5" />
                   </div>
                   <div>
                     <p
-                      className="text-warm-charcoal text-sm font-semibold"
+                      className="text-foreground text-sm font-semibold"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       {title}
                     </p>
-                    <p className="text-warm-gray mt-0.5 text-xs leading-5">
+                    <p className="text-muted-foreground mt-0.5 text-xs leading-5">
                       {description}
                     </p>
                   </div>

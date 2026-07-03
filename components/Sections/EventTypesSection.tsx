@@ -46,7 +46,7 @@ const eventTypes = [
 
 export function EventTypesSection() {
   return (
-    <section id="event-types" className="bg-cream">
+    <section id="event-types" className="bg-background">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {eventTypes.map(({ icon: Icon, title }) => (
@@ -58,7 +58,7 @@ export function EventTypesSection() {
                 <Icon className="text-accent h-6 w-6" />
               </div>
               <p
-                className="text-warm-charcoal text-center text-sm font-semibold"
+                className="text-foreground text-center text-sm font-semibold"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {title}

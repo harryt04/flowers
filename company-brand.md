@@ -52,16 +52,18 @@ Every section, headline, and CTA should serve that insight. If copy is only desc
 
 ## Color palette
 
-Colors are implemented as CSS variables in [`app/globals.css`](app/globals.css) and mirrored in [`tailwind.config.ts`](tailwind.config.ts). Always use the variables/theme tokens — never hardcode hex values in components.
+Colors are defined entirely as CSS variables in [`app/globals.css`](app/globals.css), mapped to Tailwind via `@theme inline`. Always use the semantic classes (`bg-primary`/`text-primary`, `bg-background`, `bg-secondary`, `text-foreground`, `text-muted-foreground`, `bg-card`, `bg-accent`/`text-accent`) — never introduce new custom color names in a Tailwind config or hardcode hex values in components.
 
-| Role | Token | Hex | Notes |
+| Role | Token / Tailwind Class | Hex (light mode) | Notes |
 |---|---|---|---|
-| Primary / sunshine yellow | `--primary` / `sunshine-yellow` | `#F4BD22` | Buttons, key accents, warmth. The unifying brand color. |
-| Background / cream | `--background` / `cream` | `#FFF9EA` | Page background, breathing room. Never pure white. |
-| Accent / olive green | `--accent` | `#39442B` | Secondary accent, grounding, sophistication. Use for text details, borders, small accents — not as a dominant fill. |
-| Foreground / warm charcoal | `--foreground` / `warm-charcoal` | `#3F3A2F` | Body text. Never pure black. |
-| Warm white | `warm-white` | `#F5F5F0` | Secondary surface. |
-| Warm gray | `warm-gray` / `--muted-foreground` | `#6B6354` | Muted text. |
+| Primary / sunshine yellow | `--primary` / `bg-primary`, `text-primary` | `#F4BD22` | Buttons, key accents, warmth. The unifying brand color. |
+| Background / cream | `--background` / `bg-background` | `#FFF9EA` | Page background, breathing room. Never pure white. Dark mode auto-adjusts via `@media (prefers-color-scheme: dark)`. |
+| Secondary surface | `--secondary` / `bg-secondary` | `#F5F5F0` | Secondary surfaces (was "Warm white"). |
+| Accent / olive green | `--accent` / `bg-accent`, `text-accent` | `#39442B` | Secondary accent, grounding, sophistication. Use for text details, borders, small accents — not as a dominant fill. |
+| Foreground / body text | `--foreground` / `text-foreground` | `#3F3A2F` | Body text. Never pure black. |
+| Muted foreground | `--muted-foreground` / `text-muted-foreground` | `#6B6354` | Muted text. |
+
+Dark-mode values differ automatically per the `@media (prefers-color-scheme: dark)` block in `app/globals.css` and do not need separate handling in components — all color variables and semantic classes adapt automatically.
 
 **Do:**
 - Treat yellow as the dominant, recognizable brand color (it's the "instantly recognizable from across the market" anchor color — same logic applies online).

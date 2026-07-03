@@ -11,7 +11,7 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="border-border/70 sticky top-0 z-50 border-b bg-white backdrop-blur-sm">
+    <header className="border-border/70 sticky top-0 z-50 border-b bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#top" className="flex flex-col items-center gap-1">
           <Image
@@ -29,7 +29,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="font-body text-warm-gray hover:text-warm-charcoal text-xs font-semibold whitespace-nowrap transition-colors sm:text-sm"
+              className="font-body text-muted-foreground hover:text-foreground text-xs font-semibold whitespace-nowrap transition-colors sm:text-sm"
             >
               {item.label}
             </a>

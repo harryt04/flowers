@@ -53,7 +53,7 @@ tests/              # Vitest unit tests (node env, no jsdom)
 ## Key Conventions
 
 - **`@` alias maps to repo root**, not `src/`. `@/lib/validation` → `./lib/validation.ts`.
-- **Tailwind v4** uses `@tailwindcss/postcss` (not legacy PostCSS plugin). Brand colors are in `tailwind.config.ts`; CSS variable theming is in `app/globals.css`.
+- **Tailwind v4** uses `@tailwindcss/postcss` (not legacy PostCSS plugin). Brand colors are defined entirely as CSS variables in `app/globals.css` (`@theme inline` + `:root` + `@media (prefers-color-scheme: dark)`); there is no separate Tailwind color config file. Always use the semantic classes (`bg-primary`, `text-foreground`, `bg-secondary`, `text-muted-foreground`, `bg-card`, `bg-accent`, etc.) — never add custom color names to a Tailwind config, and never hardcode hex values in components.
 - **shadcn components** are scaffolded via `npx shadcn add <component>` — style is `base-nova`. Do not hand-edit generated files in `components/ui/` unless necessary.
 - **No typecheck script** — use `npx tsc --noEmit` or rely on `next build`.
 - **Zod schemas in `lib/validation.ts`** are shared between API routes and react-hook-form resolvers — keep them as the single source of truth.

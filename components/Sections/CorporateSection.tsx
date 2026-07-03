@@ -31,17 +31,17 @@ const features = [
 
 export function CorporateSection() {
   return (
-    <section id="corporate" className="bg-cream">
+    <section id="corporate" className="bg-background">
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           {/* Image */}
-          <div className="mx-auto w-full max-w-md flex-shrink-0 lg:mx-0 lg:w-2/5">
+          <div className="mx-auto w-full max-w-xl flex-shrink-0 ">
             <div className="border-border relative overflow-hidden rounded-3xl border-2 shadow-xl">
               <Image
-                src="/concepts/trailer.png"
+                src="/images/about/yellow-truck.png"
                 alt="Sunshine Flower Bar mobile flower trailer at corporate event"
-                width={480}
-                height={560}
+                width={700}
+                height={700}
                 className="h-auto w-full object-cover"
               />
             </div>
@@ -50,18 +50,18 @@ export function CorporateSection() {
           {/* Content */}
           <div className="flex-1">
             <p
-              className="text-sunshine-yellow mb-3 font-semibold"
+              className="text-primary mb-3 font-semibold"
               style={{ fontFamily: 'var(--font-accent)', fontSize: '1.25rem' }}
             >
               for your team
             </p>
             <h2
-              className="text-warm-charcoal text-4xl font-bold sm:text-5xl"
+              className="text-foreground text-4xl font-bold sm:text-5xl"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               Bring Sunshine to Your Workplace
             </h2>
-            <p className="text-warm-gray mt-4 text-lg leading-8">
+            <p className="text-muted-foreground mt-4 text-lg leading-8">
               Bring unexpected joy to your team. Fresh flowers boost morale,
               spark conversation, and show your people they matter. From weekly
               deliveries to pop-up events, we help you celebrate your workplace
@@ -75,17 +75,17 @@ export function CorporateSection() {
                   key={title}
                   className="bg-background border-border/60 flex items-start gap-3 rounded-2xl border p-4 shadow-sm"
                 >
-                  <div className="bg-sunshine-yellow/30 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl">
-                    <Icon className="text-warm-charcoal h-5 w-5" />
+                  <div className="bg-primary/30 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl">
+                    <Icon className="text-foreground h-5 w-5" />
                   </div>
                   <div>
                     <p
-                      className="text-warm-charcoal text-sm font-semibold"
+                      className="text-foreground text-sm font-semibold"
                       style={{ fontFamily: 'var(--font-display)' }}
                     >
                       {title}
                     </p>
-                    <p className="text-warm-gray mt-0.5 text-xs leading-5">
+                    <p className="text-muted-foreground mt-0.5 text-xs leading-5">
                       {description}
                     </p>
                   </div>
@@ -104,7 +104,7 @@ export function CorporateSection() {
               >
                 Book Your Event
               </a>
-              <p className="text-warm-gray self-center text-sm italic">
+              <p className="text-muted-foreground self-center text-sm italic">
                 No commitment — we&apos;d love to chat first.
               </p>
             </div>
