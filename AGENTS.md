@@ -36,7 +36,7 @@ app/
     contact/        # POST → MongoDB insert into corporate_leads
     subscribe/      # POST → MongoDB insert into emailSubscribers
 components/
-  Sections/         # HeroSection, AboutSection, FarmersMarketSection, EmailSection, CorporateSection, ContactSection
+  Sections/         # HeroSection, OurStorySection, EventTypesSection, MeetSunshineSection, SeasonalMenuSection, CorporateSection, ContactSection, SunshineClubSection
   ui/               # shadcn primitives (do not hand-edit; use `npx shadcn add`)
 lib/
   validation.ts     # Zod schemas (subscribeSchema, contactSchema) — source of truth for both API and forms

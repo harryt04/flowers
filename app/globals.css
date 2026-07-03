@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme inline {
   --color-background: var(--background);
@@ -70,9 +70,8 @@
   --border: #e7dfc3;
   --input: #ebe3c8;
   --ring: #f4bd22;
-  --sunshine-yellow: #F4BD22;
-  --cream: #FFF9EA;
-  --olive: #39442B;
+  --sunshine-yellow: #f4bd22;
+  --cream: #fff9ea;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -89,6 +88,36 @@
   --sidebar-ring: #f4bd22;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1f2417;
+    --foreground: #e5e5e5;
+    --card: #262c1c;
+    --card-foreground: #e5e5e5;
+    --popover: #262c1c;
+    --popover-foreground: #e5e5e5;
+    --primary: #f4bd22;
+    --primary-foreground: #1f2417;
+    --secondary: #2c3321;
+    --secondary-foreground: #e5e5e5;
+    --muted: #262c1c;
+    --muted-foreground: #b5b0a0;
+    --accent: #7a8a63;
+    --accent-foreground: #1f2417;
+    --border: #3a4230;
+    --input: #3a4230;
+    --ring: #f4bd22;
+    --sidebar: #262c1c;
+    --sidebar-foreground: #e5e5e5;
+    --sidebar-primary: #f4bd22;
+    --sidebar-primary-foreground: #1f2417;
+    --sidebar-accent: #7a8a63;
+    --sidebar-accent-foreground: #1f2417;
+    --sidebar-border: #3a4230;
+    --sidebar-ring: #f4bd22;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -97,7 +126,21 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body), system-ui, sans-serif;
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display), Georgia, serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
   }
 }

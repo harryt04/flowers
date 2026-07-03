@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Send } from "lucide-react";
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Send } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Form,
   FormControl,
@@ -13,55 +13,55 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { contactSchema, type ContactInput } from "@/lib/validation";
+} from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { contactSchema, type ContactInput } from '@/lib/validation'
 
 export function ContactForm() {
-  const [serverMessage, setServerMessage] = useState<string | null>(null);
-  const [isError, setIsError] = useState(false);
+  const [serverMessage, setServerMessage] = useState<string | null>(null)
+  const [isError, setIsError] = useState(false)
 
   const form = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      eventDate: "",
-      location: "",
-      estimatedGuests: "",
-      message: "",
+      name: '',
+      email: '',
+      phone: '',
+      eventDate: '',
+      location: '',
+      estimatedGuests: '',
+      message: '',
     },
-  });
+  })
 
   const onSubmit = form.handleSubmit(async (values) => {
-    setServerMessage(null);
-    setIsError(false);
+    setServerMessage(null)
+    setIsError(false)
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
+    const response = await fetch('/api/contact', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
-    });
+    })
 
     const data = (await response.json()) as {
-      success: boolean;
-      message?: string;
-      error?: string;
-    };
-
-    if (!response.ok || !data.success) {
-      setIsError(true);
-      setServerMessage(data.error ?? "Something went wrong. Please try again.");
-      return;
+      success: boolean
+      message?: string
+      error?: string
     }
 
-    form.reset();
-    setServerMessage(data.message ?? "Thank you! We'll be in touch soon.");
-  });
+    if (!response.ok || !data.success) {
+      setIsError(true)
+      setServerMessage(data.error ?? 'Something went wrong. Please try again.')
+      return
+    }
+
+    form.reset()
+    setServerMessage(data.message ?? "Thank you! We'll be in touch soon.")
+  })
 
   return (
     <Form {...form}>
@@ -130,11 +130,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Event Date (optional)</FormLabel>
               <FormControl>
-                <Input
-                  type="date"
-                  placeholder="YYYY-MM-DD"
-                  {...field}
-                />
+                <Input type="date" placeholder="YYYY-MM-DD" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -148,11 +144,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Location (optional)</FormLabel>
               <FormControl>
-                <Input
-                  type="text"
-                  placeholder="Highland, UT"
-                  {...field}
-                />
+                <Input type="text" placeholder="Highland, UT" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -166,11 +158,7 @@ export function ContactForm() {
             <FormItem>
               <FormLabel>Estimated Guests (optional)</FormLabel>
               <FormControl>
-                <Input
-                  type="text"
-                  placeholder="10–20"
-                  {...field}
-                />
+                <Input type="text" placeholder="10–20" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -200,15 +188,15 @@ export function ContactForm() {
           size="lg"
           disabled={form.formState.isSubmitting}
           className="w-full gap-2 text-sm"
-          style={{ fontFamily: "var(--font-cta)" }}
+          style={{ fontFamily: 'var(--font-cta)' }}
         >
           <Send className="h-4 w-4" />
-          {form.formState.isSubmitting ? "Sending..." : "Send Booking Request"}
+          {form.formState.isSubmitting ? 'Sending...' : 'Send Booking Request'}
         </Button>
 
         {serverMessage ? (
           <p
-            className={`text-sm text-center ${isError ? "text-destructive" : "text-soft-green"}`}
+            className={`text-center text-sm ${isError ? 'text-destructive' : 'text-accent'}`}
             aria-live="polite"
             role="status"
           >
@@ -217,5 +205,5 @@ export function ContactForm() {
         ) : null}
       </form>
     </Form>
-  );
+  )
 }

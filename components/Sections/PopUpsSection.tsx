@@ -1,52 +1,50 @@
 export function PopUpsSection() {
   const popUps = [
     {
-      date: "August 26th",
-      location: "Highland, Utah",
-      time: "10am–4pm",
+      date: 'August 26th',
+      location: 'Highland, Utah',
+      time: '10am–4pm',
     },
-  ];
+  ]
 
   return (
     <section id="pop-ups" className="bg-warm-white py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="mb-16 text-center">
           <h2
-            className="text-4xl font-bold text-warm-charcoal sm:text-5xl"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="text-warm-charcoal text-4xl font-bold sm:text-5xl"
+            style={{ fontFamily: 'var(--font-display)' }}
           >
             Find Us at Pop-Ups
           </h2>
-          <p className="mt-4 text-lg text-warm-gray">
-            Come see us in person
-          </p>
+          <p className="text-warm-gray mt-4 text-lg">Come see us in person</p>
         </div>
 
         {/* Desktop Table Layout */}
-        <div className="hidden sm:block overflow-x-auto">
+        <div className="hidden overflow-x-auto sm:block">
           <table className="w-full">
             <thead>
-              <tr className="border-b-2 border-soft-green">
+              <tr className="border-accent border-b-2">
                 <th className="px-6 py-4 text-left">
                   <span
-                    className="font-bold text-warm-charcoal"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    className="text-warm-charcoal font-bold"
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     Date
                   </span>
                 </th>
                 <th className="px-6 py-4 text-left">
                   <span
-                    className="font-bold text-warm-charcoal"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    className="text-warm-charcoal font-bold"
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     Location
                   </span>
                 </th>
                 <th className="px-6 py-4 text-left">
                   <span
-                    className="font-bold text-warm-charcoal"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    className="text-warm-charcoal font-bold"
+                    style={{ fontFamily: 'var(--font-display)' }}
                   >
                     Time
                   </span>
@@ -55,10 +53,15 @@ export function PopUpsSection() {
             </thead>
             <tbody>
               {popUps.map((popUp, index) => (
-                <tr key={index} className="border-b border-border hover:bg-cream/50">
-                  <td className="px-6 py-4 text-warm-charcoal">{popUp.date}</td>
-                  <td className="px-6 py-4 text-warm-charcoal">{popUp.location}</td>
-                  <td className="px-6 py-4 text-warm-charcoal">{popUp.time}</td>
+                <tr
+                  key={index}
+                  className="border-border hover:bg-cream/50 border-b"
+                >
+                  <td className="text-warm-charcoal px-6 py-4">{popUp.date}</td>
+                  <td className="text-warm-charcoal px-6 py-4">
+                    {popUp.location}
+                  </td>
+                  <td className="text-warm-charcoal px-6 py-4">{popUp.time}</td>
                 </tr>
               ))}
             </tbody>
@@ -70,39 +73,39 @@ export function PopUpsSection() {
           {popUps.map((popUp, index) => (
             <div
               key={index}
-              className="rounded-lg border-2 border-soft-green bg-white p-6"
+              className="border-accent rounded-lg border-2 bg-white p-6"
             >
               <div className="space-y-3">
                 <div>
                   <p
-                    className="text-sm font-semibold text-warm-gray uppercase tracking-wider"
-                    style={{ fontFamily: "var(--font-accent)" }}
+                    className="text-warm-gray text-sm font-semibold tracking-wider uppercase"
+                    style={{ fontFamily: 'var(--font-accent)' }}
                   >
                     Date
                   </p>
-                  <p className="mt-1 text-lg font-semibold text-warm-charcoal">
+                  <p className="text-warm-charcoal mt-1 text-lg font-semibold">
                     {popUp.date}
                   </p>
                 </div>
                 <div>
                   <p
-                    className="text-sm font-semibold text-warm-gray uppercase tracking-wider"
-                    style={{ fontFamily: "var(--font-accent)" }}
+                    className="text-warm-gray text-sm font-semibold tracking-wider uppercase"
+                    style={{ fontFamily: 'var(--font-accent)' }}
                   >
                     Location
                   </p>
-                  <p className="mt-1 text-lg font-semibold text-warm-charcoal">
+                  <p className="text-warm-charcoal mt-1 text-lg font-semibold">
                     {popUp.location}
                   </p>
                 </div>
                 <div>
                   <p
-                    className="text-sm font-semibold text-warm-gray uppercase tracking-wider"
-                    style={{ fontFamily: "var(--font-accent)" }}
+                    className="text-warm-gray text-sm font-semibold tracking-wider uppercase"
+                    style={{ fontFamily: 'var(--font-accent)' }}
                   >
                     Time
                   </p>
-                  <p className="mt-1 text-lg font-semibold text-warm-charcoal">
+                  <p className="text-warm-charcoal mt-1 text-lg font-semibold">
                     {popUp.time}
                   </p>
                 </div>
@@ -112,5 +115,5 @@ export function PopUpsSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }
