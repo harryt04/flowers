@@ -11,11 +11,11 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="border-border/70 sticky top-0 z-50 border-b bg-white/95 backdrop-blur-sm">
+    <header className="border-border/70 sticky top-0 z-50 border-b bg-white backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a href="#top" className="flex flex-col items-center gap-1">
           <Image
-            src="/logo.png"
+            src="/concepts/logo.png"
             alt="Sunshine Flower Bar"
             width={80}
             height={80}
