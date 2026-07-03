@@ -1,5 +1,7 @@
 # AGENTS.md
 
+After making any substantial changes, run `npm run ci` to lint and validate your changes. 
+
 ## Brand
 
 Read [`company-brand.md`](company-brand.md) before making any design, copy, or color decision — it covers voice, palette, typography, and aesthetic dos/don'ts for Sunshine Flower Bar.

@@ -17,17 +17,11 @@ export function Header() {
           <Image
             src="/concepts/logo.png"
             alt="Sunshine Flower Bar"
-            width={80}
-            height={80}
-            className="h-10 w-auto object-contain"
+            width={120}
+            height={120}
+            className="h-auto w-auto object-contain"
             priority
           />
-          <span
-            className="text-warm-charcoal text-xs font-medium"
-            style={{ fontFamily: 'var(--font-accent)' }}
-          >
-            just because
-          </span>
         </a>
 
         <nav aria-label="Primary" className="flex items-center gap-3 sm:gap-6">
