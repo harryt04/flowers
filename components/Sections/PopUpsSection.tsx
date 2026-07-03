@@ -17,7 +17,9 @@ export function PopUpsSection() {
           >
             Find Us at Pop-Ups
           </h2>
-          <p className="text-muted-foreground mt-4 text-lg">Come see us in person</p>
+          <p className="text-muted-foreground mt-4 text-lg">
+            Come see us in person
+          </p>
         </div>
 
         {/* Desktop Table Layout */}
@@ -73,7 +75,7 @@ export function PopUpsSection() {
           {popUps.map((popUp, index) => (
             <div
               key={index}
-              className="border-accent rounded-lg border-2 bg-card p-6"
+              className="border-accent bg-card rounded-lg border-2 p-6"
             >
               <div className="space-y-3">
                 <div>

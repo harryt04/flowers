@@ -35,7 +35,7 @@ export function CorporateSection() {
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           {/* Image */}
-          <div className="mx-auto w-full max-w-xl flex-shrink-0 ">
+          <div className="mx-auto w-full max-w-xl flex-shrink-0">
             <div className="border-border relative overflow-hidden rounded-3xl border-2 shadow-xl">
               <Image
                 src="/images/about/yellow-truck.png"

@@ -37,7 +37,8 @@ export function HowItWorksSection() {
                 key={item.step}
                 className={cn(
                   'relative z-10 flex flex-col items-center md:flex-1',
-                  isLast && 'col-span-2 justify-self-center md:col-span-1 md:justify-self-auto'
+                  isLast &&
+                    'col-span-2 justify-self-center md:col-span-1 md:justify-self-auto',
                 )}
               >
                 {/* Step Icon */}

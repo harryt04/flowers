@@ -46,7 +46,7 @@ export function PricingSection() {
               key={tier.name}
               className={`relative rounded-2xl border-2 p-8 transition-all ${
                 tier.popular
-                  ? 'border-primary scale-105 bg-card shadow-lg'
+                  ? 'border-primary bg-card scale-105 shadow-lg'
                   : 'border-border bg-card hover:shadow-md'
               }`}
             >

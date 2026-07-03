@@ -45,7 +45,7 @@ export function FlowerMeaningSection() {
           {flowers.map((flower) => (
             <div
               key={flower.name}
-              className="border-accent rounded-lg border-l-4 bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              className="border-accent bg-card rounded-lg border-l-4 p-6 shadow-sm transition-shadow hover:shadow-md"
             >
               <h3
                 className="text-foreground text-xl font-bold"
