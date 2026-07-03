@@ -11,12 +11,14 @@ export function HeroSection() {
         <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-16">
           {/* Text content */}
           <div className="flex-1 text-center lg:text-left">
-            <p
-              className="bg-primary/40 text-foreground mb-4 inline-block rounded-full px-4 py-1.5 text-sm font-semibold tracking-widest uppercase"
-              style={{ fontFamily: 'var(--font-accent)' }}
-            >
-              sunshine flower bar
-            </p>
+            <Image
+              src="/concepts/logo.png"
+              alt="Sunshine Flower Bar"
+              width={220}
+              height={139}
+              className="mb-4 inline-block h-auto w-40 sm:w-48"
+              priority
+            />
             <h1
               className="text-foreground text-5xl leading-tight font-bold sm:text-6xl lg:text-7xl"
               style={{ fontFamily: 'var(--font-display)' }}
