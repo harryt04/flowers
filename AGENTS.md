@@ -8,7 +8,7 @@ Read [`company-brand.md`](company-brand.md) before making any design, copy, or c
 
 ## Stack
 
-Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`base-nova` style), MongoDB, Vitest.
+Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`base-nova` style), MongoDB, @vercel/analytics, Vitest.
 
 ## Commands
 
@@ -30,6 +30,10 @@ No Makefile, no CI, no task runner.
 - `MONGODB_URI` — required; MongoDB connection string pointing to a cluster (e.g., `mongodb+srv://user:password@cluster.mongodb.net/?retryWrites=true&w=majority`)
 
 Copy `.env.local.example` → `.env.local`.
+
+## Hosting
+
+Deployed on Vercel; the GitHub repo (`harryt04/flowers`) is connected to a Vercel project. `MONGODB_URI` must be set in the Vercel project's Environment Variables for all environments (Production/Preview/Development). `@vercel/analytics`'s `<Analytics />` component lives in `app/layout.tsx` and requires no env vars — it auto-detects the Vercel deployment and only sends real data when actually served from Vercel.
 
 ## Architecture
 

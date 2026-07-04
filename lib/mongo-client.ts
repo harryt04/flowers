@@ -27,9 +27,7 @@ export async function getMongoClient(): Promise<MongoClient> {
     maxPoolSize: 10,
   }).connect()
 
-  if (process.env.NODE_ENV !== 'production') {
-    global._mongoClientPromise = clientPromise
-  }
+  global._mongoClientPromise = clientPromise
 
   return clientPromise
 }
