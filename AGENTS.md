@@ -8,7 +8,7 @@ Read [`company-brand.md`](company-brand.md) before making any design, copy, or c
 
 ## Stack
 
-Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`base-nova` style), MongoDB, @vercel/analytics, @vercel/speed-insights, Vitest.
+Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`base-nova` style), MongoDB, Resend (contact-form email notifications), @vercel/analytics, @vercel/speed-insights, Vitest.
 
 ## Commands
 
@@ -28,6 +28,9 @@ No Makefile, no CI, no task runner.
 ## Environment Variables
 
 - `MONGODB_URI` — required; MongoDB connection string pointing to a cluster (e.g., `mongodb+srv://user:password@cluster.mongodb.net/?retryWrites=true&w=majority`)
+- `RESEND_API_KEY` — required for contact-form email notifications; API key from [resend.com](https://resend.com). If unset, `lib/email.ts` logs a warning and skips sending (the booking is still saved to MongoDB).
+- `CONTACT_NOTIFICATION_EMAIL` — required alongside `RESEND_API_KEY`; the inbox that receives new booking-request notifications.
+- `RESEND_FROM_EMAIL` — optional; the verified "from" address (e.g., `Sunshine Flower Bar <bookings@yourdomain.com>`). Defaults to Resend's shared `onboarding@resend.dev` sender, which can only deliver to the email address on the Resend account until a sending domain is verified.
 
 Copy `.env.local.example` → `.env.local`.
 
@@ -43,13 +46,14 @@ Single-page app — all content is on `/`. Navigation uses smooth-scroll to sect
 app/
   page.tsx          # composes all section components
   api/
-    contact/        # POST → MongoDB insert into corporate_leads
+    contact/        # POST → MongoDB insert into bookingRequests, then Resend notification email
     subscribe/      # POST → MongoDB insert into emailSubscribers
 components/
   Sections/         # HeroSection, OurStorySection, EventTypesSection, MeetSunshineSection, SeasonalMenuSection, CorporateSection, ContactSection, SunshineClubSection
   ui/               # shadcn primitives (do not hand-edit; use `npx shadcn add`)
 lib/
   validation.ts     # Zod schemas (subscribeSchema, contactSchema) — source of truth for both API and forms
+  email.ts          # Resend client + sendBookingNotification(), used by app/api/contact/route.ts
 tests/              # Vitest unit tests (node env, no jsdom)
 .agents/specs/      # SDD orchestration spec for this project
 ```
