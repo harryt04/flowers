@@ -39,28 +39,43 @@ export function ContactForm() {
     setServerMessage(null)
     setIsError(false)
 
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    // Build Discord message content
+    const content = `<@1529663756488151081> <@1288596095185715210> someone filled out the new contact form on sunshineflowerbar.com, here is their message:
+
+**Name:** ${values.name}
+**Email:** ${values.email}
+**Phone:** ${values.phone || '(not provided)'}
+**Event Date:** ${values.eventDate || '(not provided)'}
+**Location:** ${values.location || '(not provided)'}
+**Estimated Guests:** ${values.estimatedGuests || '(not provided)'}
+**Message:** ${values.message || '(not provided)'}
+
+Lily, please reach out to this person by text if phone number is available, by email if not. The goal of the contact should be to follow up on their inquiry here, and to get more information about what they need, then relay that back to Elisabeth here on this thread. If the customer asks for the business owner's phone number, you may give it to them.`
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_DISCORD_CONTACT_WEBHOOK_URL}?wait=true`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content,
+          allowed_mentions: {
+            users: ['1529663756488151081', '1288596095185715210'],
+          },
+        }),
       },
-      body: JSON.stringify(values),
-    })
+    )
 
-    const data = (await response.json()) as {
-      success: boolean
-      message?: string
-      error?: string
-    }
-
-    if (!response.ok || !data.success) {
+    if (!response.ok) {
       setIsError(true)
-      setServerMessage(data.error ?? 'Something went wrong. Please try again.')
+      setServerMessage('Something went wrong. Please try again.')
       return
     }
 
     form.reset()
-    setServerMessage(data.message ?? "Thank you! We'll be in touch soon.")
+    setServerMessage("Thank you! We'll be in touch soon.")
   })
 
   return (
