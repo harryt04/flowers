@@ -11,7 +11,10 @@ export const bookingSchema = z.object({
   eventDate: z.string().optional(),
   location: z.string().optional(),
   estimatedGuests: z.string().optional(),
-  message: z.string().optional(),
+  message: z
+    .string()
+    .max(1500, 'Message must be less than 1500 characters.')
+    .optional(),
 })
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>
