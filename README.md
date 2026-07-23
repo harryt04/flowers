@@ -1,4 +1,4 @@
-# Just Because Flowers Landing Page
+# Sunshine Flower Bar Landing Page
 
 Warm, single-page Next.js landing page for Just Because Flowers with:
 
