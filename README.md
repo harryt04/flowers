@@ -54,3 +54,13 @@ npm run build
 - `POST /api/contact`
   - Body: `{ "name", "email", "inquiryType", "message" }`
   - Validates payload and stores submission in MongoDB `corporate_leads` collection.
+
+## Quick start
+
+```bash
+npm install
+npm run dev
+```
+
+See `AGENTS.md` for full commands and conventions.
+See `CONTRIBUTING.md` for PR process.
