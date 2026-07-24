@@ -74,8 +74,13 @@ Lily, please reach out to this person by text if phone number is available, by e
       return
     }
 
+    const hasPhone = Boolean(values.phone?.trim())
     form.reset()
-    setServerMessage("Thank you! We'll be in touch soon.")
+    setServerMessage(
+      hasPhone
+        ? "Thank you! We'll be in touch soon."
+        : "Thank you! We'll email you soon. If you don't see it, please check your spam folder.",
+    )
   })
 
   return (
