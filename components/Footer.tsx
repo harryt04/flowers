@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const KINDNESS_QUOTES = [
   "Flowers don't ask who deserves kindness—they simply bloom.",
@@ -35,23 +36,25 @@ export function Footer() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <a
+            <Link
               href="/privacy"
               className="text-muted-foreground hover:text-foreground"
             >
               Privacy
-            </a>
-            <a
+            </Link>
+            <Link
               href="/terms"
               className="text-muted-foreground hover:text-foreground"
             >
               Terms
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            </Link>
+            <a
+              href="https://www.instagram.com/sunshineflowerbar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground"
+            >
               Instagram
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
-              Facebook
             </a>
           </div>
         </div>
