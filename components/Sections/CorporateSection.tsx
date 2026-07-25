@@ -95,7 +95,7 @@ export function CorporateSection() {
 
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <a
-                href="#contact"
+                href="/#contact"
                 className={buttonVariants({
                   size: 'lg',
                   className: 'px-8 text-lg shadow-md',

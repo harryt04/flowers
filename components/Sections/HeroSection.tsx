@@ -32,7 +32,7 @@ export function HeroSection() {
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
               <a
-                href="#contact"
+                href="/#contact"
                 className={buttonVariants({
                   size: 'lg',
                   className: 'px-8 py-6 text-lg shadow-md',
@@ -42,7 +42,7 @@ export function HeroSection() {
                 Book a Flower Bar
               </a>
               <a
-                href="#pop-ups"
+                href="/#pop-ups"
                 className={buttonVariants({
                   variant: 'outline',
                   size: 'lg',

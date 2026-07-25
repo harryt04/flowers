@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 const navItems = [
-  { label: 'How It Works', href: '#how-it-works' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'About', href: '#about' },
-  { label: 'Pop-Ups', href: '#pop-ups' },
-  { label: 'Corporate', href: '#corporate' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'About', href: '/#about' },
+  { label: 'Pop-Ups', href: '/#pop-ups' },
+  { label: 'Corporate', href: '/#corporate' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const SCROLL_THRESHOLD = 120
@@ -29,7 +29,7 @@ export function Header() {
     <header className="border-border/70 bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <a
-          href="#top"
+          href="/"
           className={`flex flex-col items-center gap-1 overflow-hidden transition-all duration-300 ease-out ${
             scrolled
               ? 'w-[70px] scale-100 opacity-100'
