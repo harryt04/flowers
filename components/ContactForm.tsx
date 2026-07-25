@@ -202,31 +202,32 @@ export function ContactForm() {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <p className="text-muted-foreground text-sm leading-snug">
-                    I agree to receive SMS texts from Sunshine Flower Bar about
-                    my booking inquiry and event coordination. Message frequency
-                    varies. Message and data rates may apply. Reply STOP to opt
-                    out or HELP for help. Consent is not a condition of
-                    purchase. See our{' '}
-                    <a
-                      href="/terms"
-                      className="hover:text-foreground underline"
-                    >
-                      terms
-                    </a>{' '}
-                    and{' '}
-                    <a
-                      href="/privacy"
-                      className="hover:text-foreground underline"
-                    >
-                      privacy policy
-                    </a>
-                    .
-                  </p>
-                </div>
-              </FormItem>
-            )}
-          />
+                   <p className="text-muted-foreground text-sm leading-snug">
+                     I agree to receive SMS texts from Sunshine Flower Bar about
+                     my booking inquiry and event coordination. Message frequency
+                     varies. Message and data rates may apply. Reply STOP to opt
+                     out or HELP for help. Consent is not a condition of
+                     purchase. See our{' '}
+                     <a
+                       href="/terms"
+                       className="hover:text-foreground underline"
+                     >
+                       terms
+                     </a>{' '}
+                     and{' '}
+                     <a
+                       href="/privacy"
+                       className="hover:text-foreground underline"
+                     >
+                       privacy policy
+                     </a>
+                     .
+                   </p>
+                 </div>
+                 <FormMessage />
+               </FormItem>
+             )}
+           />
 
           <FormField
             control={form.control}
