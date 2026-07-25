@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { bookingSchema } from '@/lib/validation'
 import { getDb, mongoDBConfig } from '@/lib/mongo-client'
 import { sendBookingNotification } from '@/lib/email'
+import { sendBookingDiscordNotification } from '@/lib/discord'
 
 export async function POST(req: Request) {
   try {
@@ -40,6 +41,7 @@ export async function POST(req: Request) {
     }
 
     await sendBookingNotification(parsed.data)
+    await sendBookingDiscordNotification(parsed.data)
 
     return NextResponse.json({
       success: true,

@@ -19,6 +19,8 @@ describe('bookingSchema', () => {
     const parsed = bookingSchema.safeParse({
       name: 'John Doe',
       email: 'john@example.com',
+      smsConsent: false,
+      emailMarketingConsent: false,
     })
     expect(parsed.success).toBe(true)
   })
@@ -32,6 +34,8 @@ describe('bookingSchema', () => {
       location: 'Downtown Hall',
       estimatedGuests: '150',
       message: "We'd love flowers for our event!",
+      smsConsent: true,
+      emailMarketingConsent: false,
     })
     expect(parsed.success).toBe(true)
   })
@@ -66,10 +70,12 @@ describe('bookingSchema', () => {
     expect(parsed.success).toBe(false)
   })
 
-  it('allows all optional fields to be omitted', () => {
+  it('allows optional event fields to be omitted', () => {
     const parsed = bookingSchema.safeParse({
       name: 'Minimal Contact',
       email: 'minimal@example.com',
+      smsConsent: false,
+      emailMarketingConsent: false,
     })
     expect(parsed.success).toBe(true)
     if (parsed.success) {
@@ -78,6 +84,62 @@ describe('bookingSchema', () => {
       expect(parsed.data.location).toBeUndefined()
       expect(parsed.data.estimatedGuests).toBeUndefined()
       expect(parsed.data.message).toBeUndefined()
+      expect(parsed.data.smsConsent).toBe(false)
+      expect(parsed.data.emailMarketingConsent).toBe(false)
     }
+  })
+
+  it('rejects missing consent fields', () => {
+    const parsed = bookingSchema.safeParse({
+      name: 'Minimal Contact',
+      email: 'minimal@example.com',
+    })
+    expect(parsed.success).toBe(false)
+  })
+
+  it('accepts true/false for consent fields', () => {
+    const parsedTrue = bookingSchema.safeParse({
+      name: 'Test',
+      email: 'test@example.com',
+      smsConsent: true,
+      emailMarketingConsent: true,
+    })
+    expect(parsedTrue.success).toBe(true)
+    if (parsedTrue.success) {
+      expect(parsedTrue.data.smsConsent).toBe(true)
+      expect(parsedTrue.data.emailMarketingConsent).toBe(true)
+    }
+
+    const parsedFalse = bookingSchema.safeParse({
+      name: 'Test',
+      email: 'test@example.com',
+      smsConsent: false,
+      emailMarketingConsent: false,
+    })
+    expect(parsedFalse.success).toBe(true)
+    if (parsedFalse.success) {
+      expect(parsedFalse.data.smsConsent).toBe(false)
+      expect(parsedFalse.data.emailMarketingConsent).toBe(false)
+    }
+  })
+
+  it('can submit with both consents false', () => {
+    const parsed = bookingSchema.safeParse({
+      name: 'Test',
+      email: 'test@example.com',
+      smsConsent: false,
+      emailMarketingConsent: false,
+    })
+    expect(parsed.success).toBe(true)
+  })
+
+  it('can submit with both consents true', () => {
+    const parsed = bookingSchema.safeParse({
+      name: 'Test',
+      email: 'test@example.com',
+      smsConsent: true,
+      emailMarketingConsent: true,
+    })
+    expect(parsed.success).toBe(true)
   })
 })

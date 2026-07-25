@@ -1,6 +1,10 @@
 # AGENTS.md
 
-After making any substantial changes, run `npm run ci` to lint and validate your changes. 
+After making any substantial changes, run `npm run ci` to lint and validate your changes.
+
+## Orchestration
+
+When acting as the primary/orchestrator agent: **do not implement large multi-file work inline**. Plan, then delegate bounded implementation chunks to sub-agents (`code-implementor`, `explore`, reviewers, etc.). Verify results, integrate, and run CI. Protect the orchestrator context window.
 
 ## Brand
 
@@ -31,6 +35,7 @@ No Makefile, no CI, no task runner.
 - `RESEND_API_KEY` — required for contact-form email notifications; API key from [resend.com](https://resend.com). If unset, `lib/email.ts` logs a warning and skips sending (the booking is still saved to MongoDB).
 - `CONTACT_NOTIFICATION_EMAIL` — required alongside `RESEND_API_KEY`; the inbox that receives new booking-request notifications.
 - `RESEND_FROM_EMAIL` — optional; the verified "from" address (e.g., `Sunshine Flower Bar <bookings@yourdomain.com>`). Defaults to Resend's shared `onboarding@resend.dev` sender, which can only deliver to the email address on the Resend account until a sending domain is verified.
+- `DISCORD_CONTACT_WEBHOOK_URL` — server-only (never NEXT_PUBLIC); Discord webhook for contact-form booking notifications. If unset, `lib/discord.ts` logs warning and skips (booking saved to MongoDB).
 
 Copy `.env.local.example` → `.env.local`.
 
@@ -46,17 +51,20 @@ Single-page app — all content is on `/`. Navigation uses smooth-scroll to sect
 app/
   page.tsx          # composes all section components
   api/
-    contact/        # POST → MongoDB insert into bookingRequests, then Resend notification email
+    contact/        # POST → MongoDB insert into bookingRequests, then Resend + Discord webhook notifications
     subscribe/      # POST → MongoDB insert into emailSubscribers
 components/
   Sections/         # HeroSection, OurStorySection, EventTypesSection, MeetSunshineSection, SeasonalMenuSection, CorporateSection, ContactSection, SunshineClubSection
   ui/               # shadcn primitives (do not hand-edit; use `npx shadcn add`)
 lib/
   validation.ts     # Zod schemas (subscribeSchema, contactSchema) — source of truth for both API and forms
-  email.ts          # Resend client + sendBookingNotification(), used by app/api/contact/route.ts
+  email.ts          # Resend client + sendBookingNotification()
+  discord.ts        # server-side Discord webhook for booking notifications
 tests/              # Vitest unit tests (node env, no jsdom)
 .agents/specs/      # SDD orchestration spec for this project
 ```
+
+Note: contact form now links to `/terms` and `/privacy` routes (to be added if not present).
 
 ## Key Conventions
 

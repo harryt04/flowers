@@ -15,11 +15,12 @@ export const bookingSchema = z.object({
     .string()
     .max(1500, 'Message must be less than 1500 characters.')
     .optional(),
+  smsConsent: z.boolean(),
+  emailMarketingConsent: z.boolean(),
 })
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>
 export type BookingInput = z.infer<typeof bookingSchema>
 
-// Alias for ContactForm backwards compatibility
 export const contactSchema = bookingSchema
 export type ContactInput = BookingInput

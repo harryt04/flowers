@@ -36,6 +36,8 @@ export async function sendBookingNotification(
     ['Location', booking.location],
     ['Estimated guests', booking.estimatedGuests],
     ['Message', booking.message],
+    ['SMS consent', booking.smsConsent ? 'Yes' : 'No'],
+    ['Email marketing consent', booking.emailMarketingConsent ? 'Yes' : 'No'],
   ]
 
   const html = `

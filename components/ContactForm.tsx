@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Send } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Form,
   FormControl,
@@ -32,6 +33,8 @@ export function ContactForm() {
       location: '',
       estimatedGuests: '',
       message: '',
+      smsConsent: false,
+      emailMarketingConsent: false,
     },
   })
 
@@ -39,38 +42,21 @@ export function ContactForm() {
     setServerMessage(null)
     setIsError(false)
 
-    // Build Discord message content
-    const content = `<@1529663756488151081> <@1288596095185715210> someone filled out the new contact form on sunshineflowerbar.com, here is their message:
-
-**Name:** ${values.name}
-**Email:** ${values.email}
-**Phone:** ${values.phone || '(not provided)'}
-**Event Date:** ${values.eventDate || '(not provided)'}
-**Location:** ${values.location || '(not provided)'}
-**Estimated Guests:** ${values.estimatedGuests || '(not provided)'}
-**Message:** ${values.message || '(not provided)'}
-
-Lily, please reach out to this person by text if phone number is available, by email if not. The goal of the contact should be to follow up on their inquiry here, and to get more information about what they need, then relay that back to Elisabeth here on this thread. If the customer asks for the business owner's phone number, you may give it to them.`
-
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_DISCORD_CONTACT_WEBHOOK_URL}?wait=true`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content,
-          allowed_mentions: {
-            users: ['1529663756488151081', '1288596095185715210'],
-          },
-        }),
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-    )
+      body: JSON.stringify(values),
+    })
+
+    const result = await response.json()
 
     if (!response.ok) {
       setIsError(true)
-      setServerMessage('Something went wrong. Please try again.')
+      setServerMessage(
+        result.error || 'Something went wrong. Please try again.',
+      )
       return
     }
 
@@ -78,7 +64,7 @@ Lily, please reach out to this person by text if phone number is available, by e
     form.reset()
     setServerMessage(
       hasPhone
-        ? "Thank you! We'll be in touch soon."
+        ? result.message || "Thank you! We'll be in touch soon."
         : "Thank you! We'll email you soon. If you don't see it, please check your spam folder.",
     )
   })
@@ -202,6 +188,69 @@ Lily, please reach out to this person by text if phone number is available, by e
             </FormItem>
           )}
         />
+
+        <div className="space-y-3">
+          <FormField
+            control={form.control}
+            name="smsConsent"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex items-start gap-2">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <p className="text-muted-foreground text-sm leading-snug">
+                    I agree to receive SMS texts from Sunshine Flower Bar about
+                    my booking inquiry and event coordination. Message frequency
+                    varies. Message and data rates may apply. Reply STOP to opt
+                    out or HELP for help. Consent is not a condition of
+                    purchase. See our{' '}
+                    <a
+                      href="/terms"
+                      className="hover:text-foreground underline"
+                    >
+                      terms
+                    </a>{' '}
+                    and{' '}
+                    <a
+                      href="/privacy"
+                      className="hover:text-foreground underline"
+                    >
+                      privacy policy
+                    </a>
+                    .
+                  </p>
+                </div>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="emailMarketingConsent"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex items-start gap-2">
+                  <FormControl>
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                  <p className="text-muted-foreground text-sm leading-snug">
+                    I'd like to get occasional email updates about pop-ups,
+                    seasonal offerings, and kindness-forward news from Sunshine
+                    Flower Bar. Unsubscribe anytime. Not required to submit this
+                    form.
+                  </p>
+                </div>
+              </FormItem>
+            )}
+          />
+        </div>
 
         <Button
           type="submit"

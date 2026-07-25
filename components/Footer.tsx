@@ -35,10 +35,16 @@ export function Footer() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm">
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            <a
+              href="/privacy"
+              className="text-muted-foreground hover:text-foreground"
+            >
               Privacy
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground">
+            <a
+              href="/terms"
+              className="text-muted-foreground hover:text-foreground"
+            >
               Terms
             </a>
             <a href="#" className="text-muted-foreground hover:text-foreground">
