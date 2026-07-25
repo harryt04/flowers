@@ -61,9 +61,8 @@ export default function PrivacyPolicy() {
                 number of guests, and your message about the event
               </li>
               <li>
-                Your choices for smsConsent (permission for booking and event
-                follow-up texts) and emailMarketingConsent (permission for
-                occasional emails)
+                Whether you chose to get booking follow-up texts, and whether
+                you chose to get occasional emails about pop-ups and updates
               </li>
             </ul>
           </section>
@@ -89,7 +88,7 @@ export default function PrivacyPolicy() {
               className="text-foreground text-xl font-semibold"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              SMS program disclosures
+              Text messages
             </h2>
             <p className="text-foreground mt-3">
               If you opt in, we send SMS messages related to booking and event
