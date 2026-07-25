@@ -27,7 +27,9 @@ npx vitest                                 # watch mode
 npx tsc --noEmit                           # type-check without building
 ```
 
-No Makefile, no CI, no task runner.
+No Makefile, no task runner.
+
+PR CI runs `npm run ci`.
 
 ## Environment Variables
 
