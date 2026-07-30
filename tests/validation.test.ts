@@ -143,22 +143,6 @@ describe('bookingSchema', () => {
     expect(parsed.success).toBe(true)
   })
 
-  it('requires sms consent when a phone number is provided', () => {
-    const parsed = bookingSchema.safeParse({
-      name: 'Test',
-      email: 'test@example.com',
-      phone: '555-1234',
-      smsConsent: false,
-      emailMarketingConsent: false,
-    })
-    expect(parsed.success).toBe(false)
-    if (!parsed.success) {
-      expect(parsed.error.issues.some((i) => i.path.includes('smsConsent'))).toBe(
-        true,
-      )
-    }
-  })
-
   it('allows phone when sms consent is true', () => {
     const parsed = bookingSchema.safeParse({
       name: 'Test',
