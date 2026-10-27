@@ -1,6 +1,6 @@
 # AGENTS.md
 
-After making any substantial changes, run `npm run ci` to lint and validate your changes.
+After making any substantial changes, run `pnpm run ci` to lint and validate your changes.
 
 ## Orchestration
 
@@ -17,19 +17,19 @@ Next.js 16 (App Router), TypeScript 5 (strict), Tailwind CSS v4, shadcn/ui (`bas
 ## Commands
 
 ```bash
-npm run dev       # dev server at localhost:3000
-npm run build     # production build (also runs TS type-check)
-npm run lint      # ESLint
-npm run test      # Vitest (all tests)
+pnpm run dev       # dev server at localhost:3000
+pnpm run build     # production build (also runs TS type-check)
+pnpm run lint      # ESLint
+pnpm run test      # Vitest (all tests)
 
-npx vitest run tests/validation.test.ts   # single test file
-npx vitest                                 # watch mode
-npx tsc --noEmit                           # type-check without building
+pnpm exec vitest run tests/validation.test.ts   # single test file
+pnpm exec vitest                                 # watch mode
+pnpm exec tsc --noEmit                           # type-check without building
 ```
 
 No Makefile, no task runner.
 
-PR CI runs `npm run ci`.
+PR CI runs `pnpm run ci`.
 
 ## Environment Variables
 
@@ -57,7 +57,7 @@ app/
     subscribe/      # POST → MongoDB insert into emailSubscribers
 components/
   Sections/         # HeroSection, OurStorySection, EventTypesSection, MeetSunshineSection, SeasonalMenuSection, CorporateSection, ContactSection, SunshineClubSection
-  ui/               # shadcn primitives (do not hand-edit; use `npx shadcn add`)
+  ui/               # shadcn primitives (do not hand-edit; use `pnpm exec shadcn add`)
 lib/
   validation.ts     # Zod schemas (subscribeSchema, contactSchema) — source of truth for both API and forms
   email.ts          # Resend client + sendBookingNotification()
@@ -72,6 +72,6 @@ Note: contact form now links to `/terms` and `/privacy` routes (to be added if n
 
 - **`@` alias maps to repo root**, not `src/`. `@/lib/validation` → `./lib/validation.ts`.
 - **Tailwind v4** uses `@tailwindcss/postcss` (not legacy PostCSS plugin). Brand colors are defined entirely as CSS variables in `app/globals.css` (`@theme inline` + `:root` + `@media (prefers-color-scheme: dark)`); there is no separate Tailwind color config file. Always use the semantic classes (`bg-primary`, `text-foreground`, `bg-secondary`, `text-muted-foreground`, `bg-card`, `bg-accent`, etc.) — never add custom color names to a Tailwind config, and never hardcode hex values in components.
-- **shadcn components** are scaffolded via `npx shadcn add <component>` — style is `base-nova`. Do not hand-edit generated files in `components/ui/` unless necessary.
-- **No typecheck script** — use `npx tsc --noEmit` or rely on `next build`.
+- **shadcn components** are scaffolded via `pnpm exec shadcn add <component>` — style is `base-nova`. Do not hand-edit generated files in `components/ui/` unless necessary.
+- **No typecheck script** — use `pnpm exec tsc --noEmit` or rely on `next build`.
 - **Zod schemas in `lib/validation.ts`** are shared between API routes and react-hook-form resolvers — keep them as the single source of truth.

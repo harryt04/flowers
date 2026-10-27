@@ -30,9 +30,12 @@ Required values:
 
 ## Development
 
+Use Node.js 24 and pnpm 11.24.0 (pinned in `package.json`).
+Install pnpm with `npm install --global pnpm@11.24.0` if it is not available.
+
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 Open http://localhost:3000.
@@ -40,9 +43,9 @@ Open http://localhost:3000.
 ## Verification Commands
 
 ```bash
-npm run lint
-npm run test
-npm run build
+pnpm run lint
+pnpm run test
+pnpm run build
 ```
 
 ## API Endpoints
@@ -58,8 +61,8 @@ npm run build
 ## Quick start
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 See `AGENTS.md` for full commands and conventions.
