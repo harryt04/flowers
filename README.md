@@ -30,8 +30,8 @@ Required values:
 
 ## Development
 
-Use Node.js 24 and pnpm 11.24.0 (pinned in `package.json`).
-Install pnpm with `npm install --global pnpm@11.24.0` if it is not available.
+Use Node.js 26.13.0 and pnpm 11.24.0 (pinned in `package.json`).
+Corepack is not bundled with Node 26. Install pnpm with `npm install --global pnpm@11.24.0` if it is not available.
 
 ```bash
 pnpm install
@@ -67,3 +67,19 @@ pnpm run dev
 
 See `AGENTS.md` for full commands and conventions.
 See `CONTRIBUTING.md` for PR process.
+
+## Runtime migration validation
+
+The Node 26 migration pins local/CI Node to 26.13.0 and declares `26.x` for
+Vercel builds and Functions. Vercel controls its patch versions independently;
+verify both build logs and Function runtime before production promotion.
+The repository has no Dockerfile or separate worker process.
+
+Before promoting the migration, validate contact and signup writes against a
+disposable MongoDB with mocked Resend and Discord, and verify the production
+artifact on Vercel's OS/architecture. Local Arch Linux ARM checks do not establish
+hosting compatibility. Never use production credentials for these checks.
+
+Rollback: revert the migration commit to restore Node 24 and its lockfile/types,
+and restore the previously validated Vercel deployment artifact through the
+normal authorized release process.

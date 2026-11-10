@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import { buttonVariants } from '@/components/ui/button'
 import { Building2, Users, Repeat2, Star } from 'lucide-react'
@@ -95,7 +96,7 @@ export function CorporateSection() {
             </div>
 
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
-              <a
+              <Link
                 href="/#contact"
                 className={buttonVariants({
                   size: 'lg',
@@ -104,7 +105,7 @@ export function CorporateSection() {
                 style={{ fontFamily: 'var(--font-cta)' }}
               >
                 Book Your Event
-              </a>
+              </Link>
               <p className="text-muted-foreground self-center text-sm italic">
                 No commitment — we&apos;d love to chat first.
               </p>

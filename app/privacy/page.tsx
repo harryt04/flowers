@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,12 +11,12 @@ export default function PrivacyPolicy() {
   return (
     <main className="bg-background text-foreground">
       <div className="mx-auto max-w-3xl px-4 py-12">
-        <a
+        <Link
           href="/"
           className="text-muted-foreground hover:text-foreground mb-8 inline-block text-sm"
         >
           ← Back to home
-        </a>
+        </Link>
 
         <h1
           className="text-3xl font-bold tracking-tight sm:text-4xl"
@@ -111,12 +112,12 @@ export default function PrivacyPolicy() {
             </p>
             <p className="text-foreground mt-3">
               See our{' '}
-              <a
+              <Link
                 href="/terms"
                 className="text-foreground hover:text-primary underline"
               >
                 Terms of Service
-              </a>{' '}
+              </Link>{' '}
               for complete SMS program terms.
             </p>
           </section>
@@ -223,12 +224,12 @@ export default function PrivacyPolicy() {
         </div>
 
         <div className="border-border mt-12 border-t pt-6">
-          <a
+          <Link
             href="/"
             className="text-muted-foreground hover:text-foreground text-sm"
           >
             ← Back to home
-          </a>
+          </Link>
         </div>
       </div>
     </main>
