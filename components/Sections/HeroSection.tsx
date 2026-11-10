@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Image from 'next/image'
 import { buttonVariants } from '@/components/ui/button'
 
@@ -31,7 +32,7 @@ export function HeroSection() {
               parties, weddings, and corporate events.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-              <a
+              <Link
                 href="/#contact"
                 className={buttonVariants({
                   size: 'lg',
@@ -40,8 +41,8 @@ export function HeroSection() {
                 style={{ fontFamily: 'var(--font-cta)' }}
               >
                 Book a Flower Bar
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/#pop-ups"
                 className={buttonVariants({
                   variant: 'outline',
@@ -51,7 +52,7 @@ export function HeroSection() {
                 })}
               >
                 See Upcoming Pop-Ups
-              </a>
+              </Link>
             </div>
           </div>
 

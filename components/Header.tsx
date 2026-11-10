@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -28,7 +29,7 @@ export function Header() {
   return (
     <header className="border-border/70 bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-        <a
+        <Link
           href="/"
           className={`flex flex-col items-center gap-1 overflow-hidden transition-all duration-300 ease-out ${
             scrolled
@@ -44,7 +45,7 @@ export function Header() {
             className="h-auto w-[70px] object-contain"
             priority
           />
-        </a>
+        </Link>
 
         <nav
           aria-label="Primary"

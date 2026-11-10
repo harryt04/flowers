@@ -254,7 +254,7 @@ export function ContactForm() {
                     id={emailConsentLabelId}
                     className="text-muted-foreground text-sm leading-snug"
                   >
-                    I'd like to get occasional email updates about pop-ups,
+                    I&apos;d like to get occasional email updates about pop-ups,
                     seasonal offerings, and kindness-forward news from Sunshine
                     Flower Bar. Unsubscribe anytime. Not required to submit this
                     form.
