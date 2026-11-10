@@ -14,8 +14,8 @@ export function HeroSection() {
             <Image
               src="/concepts/logo.png"
               alt="Sunshine Flower Bar"
-              width={220}
-              height={139}
+              width={192}
+              height={122}
               className="mb-4 inline-block h-auto w-40 sm:w-48"
               priority
             />
@@ -63,6 +63,7 @@ export function HeroSection() {
                 alt="Sunshine Flower Bar's flower cart set up at an outdoor pop-up"
                 width={700}
                 height={500}
+                sizes="(min-width: 1024px) 448px, (min-width: 400px) 384px, 100vw"
                 className="h-auto w-full object-cover"
                 priority
               />

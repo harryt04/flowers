@@ -36,6 +36,7 @@ export function MeetSunshineSection() {
                 alt="Sunshine—the yellow truck, the origins of Sunshine Flower Bar"
                 width={500}
                 height={400}
+                sizes="(min-width: 1152px) 440px, (min-width: 1024px) 40vw, (min-width: 448px) 448px, 100vw"
                 className="h-auto w-full object-cover"
               />
             </div>

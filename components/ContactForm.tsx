@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Send } from 'lucide-react'
@@ -20,6 +20,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { contactSchema, type ContactInput } from '@/lib/validation'
 
 export function ContactForm() {
+  const smsConsentLabelId = useId()
+  const emailConsentLabelId = useId()
   const [serverMessage, setServerMessage] = useState<string | null>(null)
   const [isError, setIsError] = useState(false)
 
@@ -198,12 +200,16 @@ export function ContactForm() {
                 <div className="flex items-start gap-2">
                   <FormControl>
                     <Checkbox
+                      aria-labelledby={smsConsentLabelId}
                       className="mt-0.5"
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <p className="text-muted-foreground text-sm leading-snug">
+                  <p
+                    id={smsConsentLabelId}
+                    className="text-muted-foreground text-sm leading-snug"
+                  >
                     I agree to receive SMS texts from Sunshine Flower Bar about
                     my booking inquiry and event coordination. Message frequency
                     varies. Message and data rates may apply. Reply STOP to opt
@@ -238,12 +244,16 @@ export function ContactForm() {
                 <div className="flex items-start gap-2">
                   <FormControl>
                     <Checkbox
+                      aria-labelledby={emailConsentLabelId}
                       className="mt-0.5"
                       checked={field.value}
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <p className="text-muted-foreground text-sm leading-snug">
+                  <p
+                    id={emailConsentLabelId}
+                    className="text-muted-foreground text-sm leading-snug"
+                  >
                     I'd like to get occasional email updates about pop-ups,
                     seasonal offerings, and kindness-forward news from Sunshine
                     Flower Bar. Unsubscribe anytime. Not required to submit this

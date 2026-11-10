@@ -35,7 +35,7 @@ export function SunshineClubSection() {
             </div>
           </div>
           <p
-            className="text-primary mb-3 font-semibold"
+            className="text-accent dark:text-primary mb-3 font-semibold"
             style={{ fontFamily: 'var(--font-accent)', fontSize: '1.25rem' }}
           >
             stay in the loop

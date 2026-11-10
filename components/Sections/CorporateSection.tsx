@@ -42,6 +42,7 @@ export function CorporateSection() {
                 alt="Sunshine Flower Bar mobile flower trailer at corporate event"
                 width={700}
                 height={700}
+                sizes="(min-width: 640px) 576px, 100vw"
                 className="h-auto w-full object-cover"
               />
             </div>
@@ -50,7 +51,7 @@ export function CorporateSection() {
           {/* Content */}
           <div className="flex-1">
             <p
-              className="text-primary mb-3 font-semibold"
+              className="text-accent dark:text-primary mb-3 font-semibold"
               style={{ fontFamily: 'var(--font-accent)', fontSize: '1.25rem' }}
             >
               for your team

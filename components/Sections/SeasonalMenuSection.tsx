@@ -17,7 +17,7 @@ export function SeasonalMenuSection() {
             alt="Seasonal menu showcasing spring, summer, fall, and winter flower selections"
             width={1536}
             height={1024}
-            sizes="100vw"
+            sizes="(min-width: 1152px) 1104px, 100vw"
             className="h-auto w-full"
             priority
           />
