@@ -83,3 +83,10 @@ hosting compatibility. Never use production credentials for these checks.
 Rollback: revert the migration commit to restore Node 24 and its lockfile/types,
 and restore the previously validated Vercel deployment artifact through the
 normal authorized release process.
+
+## License
+
+Harry-owned project code is licensed under the [MIT License](LICENSE). Site
+content, images, branding, and design are excluded; see the site's terms.
+The bundled [frontend-design skill](.agents/skills/frontend-design/LICENSE.txt)
+retains its Apache 2.0 license. Third-party dependencies retain their own licenses.
