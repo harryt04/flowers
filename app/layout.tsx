@@ -9,6 +9,7 @@ import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import { Header } from '@/components/Header'
+import { AgentBridge } from '@/components/AgentBridge'
 import { Footer } from '@/components/Footer'
 
 const playfair = Playfair_Display({
@@ -77,6 +78,7 @@ export default function RootLayout({
       className={`${playfair.variable} ${nunito.variable} ${dancingScript.variable} ${pacifico.variable} h-full scroll-smooth antialiased`}
     >
       <body className="bg-background text-foreground font-body flex min-h-full flex-col">
+        <AgentBridge />
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />

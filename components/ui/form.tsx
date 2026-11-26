@@ -93,7 +93,7 @@ function FormLabel({
 
   return (
     <Label
-      data-slot="form-label"
+      data-form-label=""
       data-error={!!error}
       className={cn('data-[error=true]:text-destructive', className)}
       htmlFor={formItemId}
@@ -107,7 +107,7 @@ function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
 
   return (
     <Slot
-      data-slot="form-control"
+      data-form-control=""
       id={formItemId}
       aria-describedby={
         !error ? formDescriptionId : `${formDescriptionId} ${formMessageId}`

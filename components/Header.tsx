@@ -4,14 +4,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
-const navItems = [
-  { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Pricing', href: '/#pricing' },
-  { label: 'About', href: '/#about' },
-  { label: 'Pop-Ups', href: '/#pop-ups' },
-  { label: 'Corporate', href: '/#corporate' },
-  { label: 'Contact', href: '/#contact' },
-]
+import { NavigationLink } from '@/components/ui/button'
+import { navItems } from '@/lib/navigation'
 
 const SCROLL_THRESHOLD = 120
 
@@ -52,13 +46,13 @@ export function Header() {
           className="hidden items-center gap-4 md:flex lg:gap-6"
         >
           {navItems.map((item) => (
-            <a
+            <NavigationLink
               key={item.href}
               href={item.href}
               className="font-body text-muted-foreground hover:text-foreground text-xs font-semibold whitespace-nowrap transition-colors sm:text-sm"
             >
               {item.label}
-            </a>
+            </NavigationLink>
           ))}
         </nav>
 
@@ -95,14 +89,14 @@ export function Header() {
       >
         <div className="flex min-h-0 flex-col px-4 py-2 sm:px-6">
           {navItems.map((item) => (
-            <a
+            <NavigationLink
               key={item.href}
               href={item.href}
               onClick={() => setMenuOpen(false)}
               className="font-body text-muted-foreground hover:text-foreground border-border/50 border-b py-3 text-sm font-semibold last:border-b-0"
             >
               {item.label}
-            </a>
+            </NavigationLink>
           ))}
         </div>
       </nav>

@@ -77,7 +77,7 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Your Name</FormLabel>
               <FormControl>
@@ -86,6 +86,8 @@ export function ContactForm() {
                   placeholder="Jane Doe"
                   autoComplete="name"
                   {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
                 />
               </FormControl>
               <FormMessage />
@@ -96,7 +98,7 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="email"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
@@ -105,6 +107,8 @@ export function ContactForm() {
                   placeholder="jane@example.com"
                   autoComplete="email"
                   {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
                 />
               </FormControl>
               <FormMessage />
@@ -115,7 +119,7 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="phone"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Phone (optional)</FormLabel>
               <FormControl>
@@ -124,6 +128,8 @@ export function ContactForm() {
                   placeholder="(555) 123-4567"
                   autoComplete="tel"
                   {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
                 />
               </FormControl>
               <FormMessage />
@@ -134,11 +140,17 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="eventDate"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Event Date (optional)</FormLabel>
               <FormControl>
-                <Input type="date" placeholder="YYYY-MM-DD" {...field} />
+                <Input
+                  type="date"
+                  placeholder="YYYY-MM-DD"
+                  {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -148,11 +160,17 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="location"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Location (optional)</FormLabel>
               <FormControl>
-                <Input type="text" placeholder="Highland, UT" {...field} />
+                <Input
+                  type="text"
+                  placeholder="Highland, UT"
+                  {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -162,11 +180,17 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="estimatedGuests"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Estimated Guests (optional)</FormLabel>
               <FormControl>
-                <Input type="text" placeholder="10–20" {...field} />
+                <Input
+                  type="text"
+                  placeholder="10–20"
+                  {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -176,7 +200,7 @@ export function ContactForm() {
         <FormField
           control={form.control}
           name="message"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Tell Us About Your Event (optional)</FormLabel>
               <FormControl>
@@ -184,6 +208,8 @@ export function ContactForm() {
                   placeholder="Help us understand the vibe..."
                   rows={4}
                   {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
                 />
               </FormControl>
               <FormMessage />
@@ -200,6 +226,7 @@ export function ContactForm() {
                 <div className="flex items-start gap-2">
                   <FormControl>
                     <Checkbox
+                      data-agent-confirm="Changes communication consent"
                       aria-labelledby={smsConsentLabelId}
                       className="mt-0.5"
                       checked={field.value}
@@ -244,6 +271,7 @@ export function ContactForm() {
                 <div className="flex items-start gap-2">
                   <FormControl>
                     <Checkbox
+                      data-agent-confirm="Changes communication consent"
                       aria-labelledby={emailConsentLabelId}
                       className="mt-0.5"
                       checked={field.value}
@@ -267,6 +295,7 @@ export function ContactForm() {
 
         <Button
           type="submit"
+          data-agent-confirm="Sends a booking inquiry"
           size="lg"
           disabled={form.formState.isSubmitting}
           className="w-full gap-2 text-sm"
