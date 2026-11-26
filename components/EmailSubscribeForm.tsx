@@ -62,7 +62,7 @@ export function EmailSubscribeForm() {
         <FormField
           control={form.control}
           name="email"
-          render={({ field }) => (
+          render={({ field: { onChange, ...field } }) => (
             <FormItem>
               <FormLabel>Your Email Address</FormLabel>
               <FormControl>
@@ -71,6 +71,8 @@ export function EmailSubscribeForm() {
                   placeholder="you@example.com"
                   autoComplete="email"
                   {...field}
+                  onValueChange={onChange}
+                  data-agent-secret
                 />
               </FormControl>
               <FormMessage />
@@ -80,6 +82,7 @@ export function EmailSubscribeForm() {
 
         <Button
           type="submit"
+          data-agent-confirm="Subscribes this email address"
           size="lg"
           disabled={form.formState.isSubmitting}
           className="w-full gap-2 text-sm"

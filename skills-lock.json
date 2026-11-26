@@ -1,11 +1,18 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
       "skillPath": "skills/frontend-design/SKILL.md",
-      "computedHash": "4eabc66183767153e404b39d1b839b1c37f2d82d86f0a0d7e880a579d8d62336"
+      "computedHash": "e1481fcd7484d1bc55f2ca7170b788d7357821f5595d27e7132ec7df6841b0cf"
+    },
+    "ui-sdk": {
+      "source": "vercel-labs/ui",
+      "commit": "48bb644f3bcc9b17450261897c27a7199df467b6",
+      "sourceType": "github",
+      "skillPath": "packages/core/skills/ui-sdk/SKILL.md",
+      "computedHash": "1af8b09475fd1c8784489c4c1099eb167e28297c344e1102fb017ca07ce74d00"
     }
   }
 }
