@@ -3,6 +3,11 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import {
+  Collapsible,
+  CollapsiblePanel,
+  CollapsibleTrigger,
+} from '@ui-sdk/react/collapsible'
 
 import { NavigationLink } from '@/components/ui/button'
 import { navItems } from '@/lib/navigation'
@@ -21,7 +26,15 @@ export function Header() {
   }, [])
 
   return (
-    <header className="border-border/70 bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
+    <Collapsible
+      open={menuOpen}
+      onOpenChange={setMenuOpen}
+      onKeyDown={(event) => {
+        if (event.key === 'Escape' && menuOpen) setMenuOpen(false)
+      }}
+      render={<header />}
+      className="border-border/70 bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm"
+    >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <Link
           href="/"
@@ -56,11 +69,8 @@ export function Header() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
+        <CollapsibleTrigger
+          aria-label="Menu"
           className="text-foreground relative flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span
@@ -78,16 +88,14 @@ export function Header() {
               menuOpen ? '-translate-y-2 -rotate-45' : ''
             }`}
           />
-        </button>
+        </CollapsibleTrigger>
       </div>
 
-      <nav
-        aria-label="Mobile"
-        className={`border-border/70 bg-background/95 grid overflow-hidden border-t backdrop-blur-sm transition-[grid-template-rows] duration-300 ease-out md:hidden ${
-          menuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr] border-t-0'
-        }`}
+      <CollapsiblePanel
+        render={<nav aria-label="Mobile" />}
+        className="border-border/70 bg-background/95 h-(--collapsible-panel-height) overflow-hidden border-t backdrop-blur-sm transition-[height] duration-300 ease-out data-ending-style:h-0 data-starting-style:h-0 md:hidden"
       >
-        <div className="flex min-h-0 flex-col px-4 py-2 sm:px-6">
+        <div className="flex flex-col px-4 py-2 sm:px-6">
           {navItems.map((item) => (
             <NavigationLink
               key={item.href}
@@ -99,7 +107,7 @@ export function Header() {
             </NavigationLink>
           ))}
         </div>
-      </nav>
-    </header>
+      </CollapsiblePanel>
+    </Collapsible>
   )
 }

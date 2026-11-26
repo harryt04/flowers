@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { Slot } from '@radix-ui/react-slot'
+import { renderElement } from '@ui-sdk/react/primitive'
 import {
   Controller,
   FormProvider,
@@ -102,19 +102,24 @@ function FormLabel({
   )
 }
 
-function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+function FormControl({
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLElement> & { children: React.ReactElement }) {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
-  return (
-    <Slot
-      data-form-control=""
-      id={formItemId}
-      aria-describedby={
-        !error ? formDescriptionId : `${formDescriptionId} ${formMessageId}`
-      }
-      aria-invalid={!!error}
-      {...props}
-    />
+  return renderElement(
+    'div',
+    {
+      'data-form-control': '',
+      id: formItemId,
+      'aria-describedby': !error
+        ? formDescriptionId
+        : `${formDescriptionId} ${formMessageId}`,
+      'aria-invalid': !!error,
+      ...props,
+    },
+    React.Children.only(children),
   )
 }
 
