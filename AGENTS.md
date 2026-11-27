@@ -77,13 +77,15 @@ Note: contact form now links to `/terms` and `/privacy` routes (to be added if n
 
 ## UI SDK
 
-UI SDK supplies unstyled, accessible React controls and exposes their state and supported actions to agents. Both packages are beta and exact-pinned to the same version. The API postdates model training data. Read `node_modules/@ui-sdk/react/docs/llms.txt` and `node_modules/@ui-sdk/core/skills/ui-sdk/SKILL.md` before touching components, then check the installed component documentation.
+UI SDK supplies unstyled, accessible React controls and exposes their state and supported actions to agents. `@ui-sdk/react` and `@ui-sdk/core` are beta and exact-pinned to the same version, `0.1.0-beta.17`. The API postdates model training data. Read `node_modules/@ui-sdk/react/docs/llms.txt` and `node_modules/@ui-sdk/core/skills/ui-sdk/SKILL.md` before touching components, then check the installed component documentation.
 
 App code imports from `components/ui`. Add components by hand-wrapping parts from per-component entries such as `@ui-sdk/react/select`. Never run `shadcn add` or regenerate the wrappers, which would restore Radix or Base UI. Keep the existing semantic Tailwind classes, declare the UI SDK layer before Tailwind and omit the optional global theme. UI SDK owns its slot names. Use a separate app marker for custom selectors. Give options and tab/panel pairs stable values, portal form popups to the body, and verify keyboard dismissal and focus return.
 
-Wire controlled text fields through `onValueChange` so React Hook Form receives both human and agent edits. The form helper keeps React Hook Form and Radix Slot for composing refs, IDs and ARIA props onto its child. Select uses native overflow scrolling and offers optional local scroll buttons.
+Wire controlled text fields through `onValueChange` so React Hook Form receives both human and agent edits. The form helper keeps React Hook Form, and `FormControl` composes refs, IDs and ARIA props onto its single child with `renderElement` from `@ui-sdk/react/primitive`. No Radix or Base UI package remains. There is no Select wrapper because no page uses one; hand-write it from `@ui-sdk/react/select` when one is needed.
 
-The root layout mounts `components/AgentBridge.tsx`. WebMCP exposes snapshot and query for reads. `lib/agent-policy.ts` allows specific navigation and ordinary field edits by component, accessible label and action. Decide the policy for every new interactive control and update the tests. Mark credentials and personal data with `data-agent-secret`. Keep submissions, consent, payments, orders, deletes, authentication, account/settings changes and irreversible actions denied. A `data-agent-confirm` mark always denies the step in this app.
+The header's mobile menu is a controlled UI SDK Collapsible: the trigger is named "Menu", the panel is the `Mobile` navigation and unmounts while closed, Escape closes it and returns focus to the trigger, and choosing a link closes it.
+
+The root layout mounts `components/AgentBridge.tsx`. `registerTools` exposes `snapshot`, `query` and `act` through WebMCP, and every `act` step passes the policy. `lib/agent-policy.ts`, tested in `tests/agent-policy.test.ts`, allows specific navigation, opening and closing the "Menu" collapsible, and ordinary field edits by component, accessible label and action. Decide the policy for every new interactive control and update the tests. Mark credentials and personal data with `data-agent-secret`. Keep submissions, consent, payments, orders, deletes, authentication, account/settings changes and irreversible actions denied. A `data-agent-confirm` mark always denies the step in this app.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

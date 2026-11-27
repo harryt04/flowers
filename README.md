@@ -6,13 +6,13 @@ Warm, single-page Next.js landing page for Just Because Flowers with:
 - Form handling and validation with `react-hook-form` + `zod`
 - API routes for email signups and contact submissions
 - MongoDB integration for all form submissions
-- shadcn/ui components themed to sunshine-inspired brand colors
+- shadcn/ui-styled components on UI SDK, themed to sunshine-inspired brand colors
 
 ## Stack
 
 - Next.js 16 (App Router) + TypeScript
 - Tailwind CSS v4
-- shadcn/ui
+- UI SDK (`@ui-sdk/react` and `@ui-sdk/core` 0.1.0-beta.17) with shadcn/ui styling
 - MongoDB Node driver
 - Vitest (schema validation tests)
 

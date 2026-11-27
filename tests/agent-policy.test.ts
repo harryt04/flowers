@@ -13,8 +13,23 @@ describe('WebMCP action policy', () => {
     ['button', 'Your Name', 'press', false],
     ['input', 'Your Name', 'submit', false],
     ['button', 'Delete', 'press', false],
+    ['collapsible', 'Menu', 'setOpen', true],
+    ['collapsible', 'Menu', 'press', true],
+    ['collapsible', 'Menu', 'setValue', false],
+    ['collapsible', 'Billing', 'setOpen', false],
+    ['button', 'Menu', 'press', false],
   ] as const)('%s %s %s', (component, label, action, allowed) => {
     expect(allowAgentAction({ component, label, action })).toBe(allowed)
+  })
+  it('refuses a confirmation mark on the mobile menu', () => {
+    expect(
+      allowAgentAction({
+        component: 'collapsible',
+        label: 'Menu',
+        action: 'setOpen',
+        confirm: 'Opens the menu',
+      }),
+    ).toBe(false)
   })
   it('refuses a confirmation mark even on approved navigation', () => {
     expect(

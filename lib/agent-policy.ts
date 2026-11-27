@@ -20,6 +20,8 @@ export function allowAgentAction({
   if (confirm !== undefined || !label) return false
   if (component === 'button' && action === 'press')
     return navItems.some((item) => item.label === label)
+  if (component === 'collapsible')
+    return label === 'Menu' && (action === 'setOpen' || action === 'press')
   if (action !== 'setValue' && action !== 'clear') return false
   return (
     (component === 'input' && inputLabels.has(label)) ||
